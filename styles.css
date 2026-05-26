@@ -613,10 +613,10 @@ p  { color: var(--text-muted); }
   height:180px; position:relative;
   display:flex; align-items:flex-end; padding:1rem;
 }
-.dtu-img   { background: linear-gradient(135deg, #1a3a4a 0%, #2B7A78 60%, #3AAFA9 100%); }
-.nsut-img  { background: linear-gradient(135deg, #17252A 0%, #1a4a5a 60%, #2B7A78 100%); }
-.iiitd-img { background: linear-gradient(135deg, #0d2030 0%, #173040 60%, #2B7A78 100%); }
-.igdtuw-img{ background: linear-gradient(135deg, #2a1a3a 0%, #3a2a4a 60%, #6a4a8a 100%); }
+.dtu-img   { background: url('images/dtu.jpg') center/cover no-repeat; }
+.nsut-img  { background: url('images/nsut.jpg') center/cover no-repeat; }
+.iiitd-img { background: url('images/iiitd.jpg') center/cover no-repeat; }
+.igdtuw-img{ background: url('images/igdtuw.jpg') center/cover no-repeat; }
 
 .college-img::before {
   content:'🏛️';
