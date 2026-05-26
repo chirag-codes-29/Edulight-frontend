@@ -235,12 +235,13 @@ function toggleFaq(el) {
 
 // Update document checklist progress bar
 function updateDocProgress() {
-  const checks = document.querySelectorAll('#docChecklist input[type=checkbox]');
-  const total = checks.length;
-  const checked = [...checks].filter(c => c.checked).length;
-  const pct = total ? Math.round((checked / total) * 100) : 0;
+  // Sirf mandatory checkboxes count honge progress mein
+  const mandatoryIds = ['cb-fee','cb-regform','cb-choices','cb-photos','cb-jee','cb-class12','cb-allotment','cb-class10','cb-medical'];
+  const total = mandatoryIds.length;
+  const checked = mandatoryIds.filter(id => document.getElementById(id)?.checked).length;
+  const pct = Math.round((checked / total) * 100);
 
-  // Admission page bar
+  // Admission page progress bar
   const fill = document.getElementById('docProgFill');
   const pctEl = document.getElementById('docProgPct');
   if (fill) fill.style.width = pct + '%';
