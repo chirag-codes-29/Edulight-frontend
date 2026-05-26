@@ -494,6 +494,18 @@
           <span class="session-badge planned">Planned</span>
         </div>
       </div>
+</div>
+    </div>
+
+    <!-- ASK A DOUBT -->
+    <div class="section-header" style="margin-top:3rem"><h2>Ask a Doubt</h2></div>
+    <div class="doubt-box">
+      <textarea id="doubtInput" placeholder="Type your question here… e.g. 'What's the cutoff for DTU CSE for OBC category in Round 2?'" rows="4"></textarea>
+      <div class="doubt-meta">
+        <input type="text" id="doubtName" placeholder="Your name (optional)" />
+        <button class="btn-primary" onclick="submitDoubt()">Submit Question ↗</button>
+      </div>
+      <div id="doubtConfirm" class="doubt-confirm hidden"></div>
     </div>
   </div>
 </section>
