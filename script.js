@@ -51,6 +51,14 @@ window.addEventListener('scroll', () => {
 document.getElementById('hamburger')?.addEventListener('click', () => {
   document.getElementById('navLinks')?.classList.toggle('open');
 });
+// Close nav when clicking outside
+document.addEventListener('click', (e) => {
+  const nav = document.getElementById('navLinks');
+  const burger = document.getElementById('hamburger');
+  if (nav?.classList.contains('open') && !nav.contains(e.target) && !burger.contains(e.target)) {
+    nav.classList.remove('open');
+  }
+});
 
 // Close mobile nav on link click
 document.querySelectorAll('.nav-links a').forEach(link => {
@@ -581,6 +589,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('predRank')?.addEventListener('keydown', e => {
     if (e.key === 'Enter') runPredictor();
   });
+  document.getElementById('heroRankInput')?.addEventListener('keydown', e => {
+  if (e.key === 'Enter') quickPredict();
+});
 });
 
 /**
