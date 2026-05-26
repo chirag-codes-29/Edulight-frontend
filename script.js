@@ -240,10 +240,27 @@ function updateDocProgress() {
   const checked = [...checks].filter(c => c.checked).length;
   const pct = total ? Math.round((checked / total) * 100) : 0;
 
+  // Admission page bar
   const fill = document.getElementById('docProgFill');
   const pctEl = document.getElementById('docProgPct');
   if (fill) fill.style.width = pct + '%';
   if (pctEl) pctEl.textContent = pct + '%';
+
+  // Dashboard individual bars
+  document.querySelectorAll('.dp-item[data-cb]').forEach(item => {
+    const cb = document.getElementById(item.dataset.cb);
+    const val = cb?.checked ? 100 : 0;
+    const barFill = item.querySelector('.prog-fill');
+    const barPct  = item.querySelector('.dp-pct');
+    if (barFill) barFill.style.width = val + '%';
+    if (barPct)  barPct.textContent  = val + '%';
+  });
+
+  // Dashboard overall
+  const overallPct  = document.getElementById('overallPct');
+  const overallFill = document.getElementById('overallFill');
+  if (overallPct)  overallPct.textContent  = pct + '%';
+  if (overallFill) overallFill.style.width = pct + '%';
 }
 
 // Attach listeners to checklist

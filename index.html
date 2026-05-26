@@ -274,16 +274,16 @@
       <div class="tool-card">
         <div class="tool-header"><span class="tool-icon">📂</span><h3>Document Checklist</h3></div>
         <div class="checklist" id="docChecklist">
-          <label class="check-item"><input type="checkbox" /><span>JEE Main Scorecard</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Class 10 Marksheet</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Class 12 Marksheet</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Category Certificate (if applicable)</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Domicile Certificate (Delhi)</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Aadhar Card</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Passport Size Photos (×6)</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Income Certificate (if applicable)</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Migration Certificate</span></label>
-          <label class="check-item"><input type="checkbox" /><span>Character Certificate</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-jee" /><span>JEE Main Scorecard</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-class10" /><span>Class 10 Marksheet</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-class12" /><span>Class 12 Marksheet</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-category" /><span>Category Certificate (if applicable)</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-domicile" /><span>Domicile Certificate (Delhi)</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-aadhar" /><span>Aadhar Card</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-photos" /><span>Passport Size Photos (×6)</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-income" /><span>Income Certificate (if applicable)</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-migration" /><span>Migration Certificate</span></label>
+          <label class="check-item"><input type="checkbox" id="cb-character" /><span>Character Certificate</span></label>
         </div>
         <div class="doc-progress">
           <div class="doc-prog-label"><span>Progress</span><span id="docProgPct">0%</span></div>
@@ -703,29 +703,31 @@
       </div>
 
       <!-- DOCUMENT PROGRESS -->
-      <div class="dash-card">
-        <div class="dash-card-header"><h3>📂 Document Progress</h3></div>
-        <div class="doc-progress-list">
-          <div class="dp-item">
-            <div class="dp-label"><span>JEE Scorecard</span><span class="dp-pct">100%</span></div>
-            <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+      <div class="doc-progress-list">
+          <div class="dp-item" data-cb="cb-jee">
+            <div class="dp-label"><span>JEE Scorecard</span><span class="dp-pct">0%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:0%"></div></div>
           </div>
-          <div class="dp-item">
-            <div class="dp-label"><span>Class 12 Docs</span><span class="dp-pct">80%</span></div>
-            <div class="prog-bar"><div class="prog-fill" style="width:80%"></div></div>
+          <div class="dp-item" data-cb="cb-class12">
+            <div class="dp-label"><span>Class 12 Docs</span><span class="dp-pct">0%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:0%"></div></div>
           </div>
-          <div class="dp-item">
-            <div class="dp-label"><span>Category Certificate</span><span class="dp-pct">60%</span></div>
-            <div class="prog-bar"><div class="prog-fill" style="width:60%"></div></div>
+          <div class="dp-item" data-cb="cb-category">
+            <div class="dp-label"><span>Category Certificate</span><span class="dp-pct">0%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:0%"></div></div>
           </div>
-          <div class="dp-item">
-            <div class="dp-label"><span>Domicile Certificate</span><span class="dp-pct">40%</span></div>
-            <div class="prog-bar"><div class="prog-fill" style="width:40%"></div></div>
+          <div class="dp-item" data-cb="cb-domicile">
+            <div class="dp-label"><span>Domicile Certificate</span><span class="dp-pct">0%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:0%"></div></div>
           </div>
-          <div class="dp-item">
-            <div class="dp-label"><span>Passport Photos</span><span class="dp-pct">20%</span></div>
-            <div class="prog-bar"><div class="prog-fill" style="width:20%"></div></div>
+          <div class="dp-item" data-cb="cb-photos">
+            <div class="dp-label"><span>Passport Photos</span><span class="dp-pct">0%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:0%"></div></div>
           </div>
+        </div>
+        <div class="overall-progress">
+          <div class="dp-label"><strong>Overall Readiness</strong><strong id="overallPct">0%</strong></div>
+          <div class="prog-bar large"><div class="prog-fill" id="overallFill" style="width:0%"></div></div>
         </div>
         <div class="overall-progress">
           <div class="dp-label"><strong>Overall Readiness</strong><strong id="overallPct">60%</strong></div>
