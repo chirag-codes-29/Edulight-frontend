@@ -279,6 +279,26 @@ let draggedItem = null;
 function initDragDrop() {
   const dropZone = document.getElementById('prefList');
 
+  function addToList(id, text) {
+    const dropZone = document.getElementById('prefList');
+    if (!dropZone) return;
+    const existingIds = [...dropZone.querySelectorAll('.pref-item')].map(el => el.dataset.id);
+    if (existingIds.includes(id)) { showToast('⚠️ Already in your list!'); return; }
+    const emptyMsg = dropZone.querySelector('.pref-empty-msg');
+    if (emptyMsg) emptyMsg.remove();
+    const clone = document.createElement('div');
+    clone.className = 'pref-item';
+    clone.dataset.id = id;
+    clone.innerHTML = `<span>${text}</span><span class="pref-remove" onclick="removePrefItem(this)">✕</span>`;
+    dropZone.appendChild(clone);
+    bindListItem(clone);
+    updatePrefCount();
+    showToast('✓ Added to your list!');
+    // Hide from available list
+    const original = document.querySelector(`#prefAvailable .pref-item[data-id="${id}"]`);
+    if (original) original.style.display = 'none';
+  }
+
   function bindAvailableItem(item) {
     item.addEventListener('dragstart', e => {
       e.dataTransfer.setData('type', 'new');
@@ -287,6 +307,7 @@ function initDragDrop() {
       item.classList.add('dragging');
     });
     item.addEventListener('dragend', () => item.classList.remove('dragging'));
+    item.addEventListener('dblclick', () => addToList(item.dataset.id, item.textContent.trim()));
   }
   document.querySelectorAll('.pref-item.draggable').forEach(bindAvailableItem);
 
@@ -347,23 +368,10 @@ function initDragDrop() {
     const id   = e.dataTransfer.getData('id');
     const text = e.dataTransfer.getData('text');
     if (!id) return;
-
-    const existingIds = [...dropZone.querySelectorAll('.pref-item')].map(el => el.dataset.id);
-    if (existingIds.includes(id)) { showToast('⚠️ Already in your list!'); return; }
-
-    const emptyMsg = dropZone.querySelector('.pref-empty-msg');
-    if (emptyMsg) emptyMsg.remove();
-
-    const clone = document.createElement('div');
-    clone.className = 'pref-item';
-    clone.dataset.id = id;
-    clone.innerHTML = `<span>${text}</span><span class="pref-remove" onclick="removePrefItem(this)">✕</span>`;
-    dropZone.appendChild(clone);
-    bindListItem(clone);
-    updatePrefCount();
-    showToast('✓ Added to your list!');
+    addToList(id, text);
   });
 }
+
 
 function filterPrefOptions() {
   const colleges = ['dtu','nsut','iiitd','igdtuw'];
@@ -377,13 +385,21 @@ function filterPrefOptions() {
  */
 function removePrefItem(btn) {
   const item = btn.closest('.pref-item');
+  const id = item.dataset.id;
   item.remove();
+
+  // Show back in available list
+  const original = document.querySelector(`#prefAvailable .pref-item[data-id="${id}"]`);
+  if (original) {
+    const colleges = ['dtu','nsut','iiitd','igdtuw'];
+    const active = colleges.filter(c => document.getElementById('filter-' + c)?.checked);
+    if (active.includes(original.dataset.college)) original.style.display = '';
+  }
 
   const dropZone = document.getElementById('prefList');
   if (dropZone && dropZone.children.length === 0) {
     dropZone.innerHTML = '<p class="pref-empty-msg">Drag options here to build your list</p>';
   }
-
   updatePrefCount();
 }
 
