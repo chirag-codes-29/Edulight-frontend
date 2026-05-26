@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduLight — From Rank to Right Path</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="showPage('home')">
+      <span class="logo-icon">◈</span> EduLight
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('admission')" data-page="admission">Admission</a></li>
+      <li><a href="#" onclick="showPage('community')" data-page="community">Community</a></li>
+      <li><a href="#" onclick="showPage('explore')" data-page="explore">Explore</a></li>
+      <li><a href="#" onclick="showPage('prep')" data-page="prep">Prep</a></li>
+      <li><a href="#" onclick="showPage('dashboard')" data-page="dashboard">Dashboard</a></li>
+      <li><a href="#" onclick="showPage('resources')" data-page="resources">Resources</a></li>
+      <li><a href="#" onclick="showPage('about')" class="nav-cta" data-page="about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ HOME PAGE ═══ -->
+<section class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🎯 JEE Counseling Made Clear</div>
+      <h1 class="hero-title">From Rank to<br/><span class="gradient-text">Right Path</span></h1>
+      <p class="hero-sub">Stop second-guessing your college choice. EduLight guides JEE aspirants with data-backed predictions, curated resources, and a community that gets it.</p>
+      <div class="hero-predictor">
+        <input type="number" id="heroRankInput" placeholder="Enter your JEE rank…" min="1" />
+        <button class="btn-primary" onclick="quickPredict()">Predict Now ↗</button>
+      </div>
+      <div id="heroPredictResult" class="predict-result hidden"></div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card floating">
+        <div class="hc-label">Top Match</div>
+        <div class="hc-college">DTU Delhi</div>
+        <div class="hc-branch">Computer Science</div>
+        <div class="hc-chance high">High Chance ✓</div>
+      </div>
+      <div class="hero-card floating delay-1">
+        <div class="hc-label">Safe Option</div>
+        <div class="hc-college">NSUT Delhi</div>
+        <div class="hc-branch">Information Tech</div>
+        <div class="hc-chance med">Moderate ●</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTES STRIP -->
+  <div class="quotes-strip">
+    <div class="quotes-inner">
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <p>Falling behind isn't dangerous — standing still is.</p>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <p>Will start studying tomorrow — the longest-running series in college.</p>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <p>Consistency beats talent when talent doesn't show up.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES SECTION -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">What we offer</span>
+      <h2>Everything you need,<br/><em>nothing you don't</em></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" onclick="showPage('admission')">
+        <div class="feat-icon">🎯</div>
+        <h3>College Predictor</h3>
+        <p>Enter your rank and category. Get realistic college options backed by real cutoff data.</p>
+        <span class="feat-arrow">→</span>
+      </div>
+      <div class="feature-card" onclick="showPage('admission')">
+        <div class="feat-icon">📋</div>
+        <h3>Preference Builder</h3>
+        <p>Drag, rank and finalize your college-branch combinations with our guided builder.</p>
+        <span class="feat-arrow">→</span>
+      </div>
+      <div class="feature-card" onclick="showPage('admission')">
+        <div class="feat-icon">📂</div>
+        <h3>Document Checklist</h3>
+        <p>Never miss a document. Track every certificate, form and deadline in one place.</p>
+        <span class="feat-arrow">→</span>
+      </div>
+      <div class="feature-card" onclick="showPage('community')">
+        <div class="feat-icon">💬</div>
+        <h3>Community</h3>
+        <p>Connect with seniors, batchmates and counselors in curated WhatsApp groups.</p>
+        <span class="feat-arrow">→</span>
+      </div>
+      <div class="feature-card" onclick="showPage('resources')">
+        <div class="feat-icon">📚</div>
+        <h3>Resources</h3>
+        <p>Curated links, downloads, and guides for every stage of your counseling journey.</p>
+        <span class="feat-arrow">→</span>
+      </div>
+      <div class="feature-card" onclick="showPage('explore')">
+        <div class="feat-icon">🔍</div>
+        <h3>College Explorer</h3>
+        <p>Deep-dive into DTU, NSUT, IIITD and IGDTUW — compare branches, placements & vibes.</p>
+        <span class="feat-arrow">→</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">Top Delhi Colleges</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Community Groups</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Resources Curated</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-num">Free</div><div class="stat-label">Always & Forever</div></div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════ ADMISSION PAGE ═══ -->
+<section class="page" id="page-admission">
+  <div class="page-hero">
+    <span class="section-label">Counseling Tools</span>
+    <h1>Admission <span class="gradient-text">Central</span></h1>
+    <p>Everything you need to navigate JAC Delhi counseling — from rank to round 1 seat.</p>
+  </div>
+
+  <div class="section">
+    <!-- TOOLS ROW -->
+    <div class="section-header"><h2>Tools</h2></div>
+    <div class="tools-grid">
+
+      <!-- College Predictor -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-icon">🎯</span>
+          <h3>College Predictor</h3>
+        </div>
+        <div class="predictor-form">
+          <input type="number" id="predRank" placeholder="Your JEE Rank" />
+          <select id="predCategory">
+            <option value="">Select Category</option>
+            <option>General</option>
+            <option>OBC</option>
+            <option>SC</option>
+            <option>ST</option>
+            <option>EWS</option>
+          </select>
+          <select id="predGender">
+            <option value="">Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          <button class="btn-primary full-w" onclick="runPredictor()">Predict Colleges →</button>
+        </div>
+        <div id="predictorResults" class="predictor-results hidden"></div>
+      </div>
+
+      <!-- Cutoff Explorer -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-icon">📊</span>
+          <h3>Cutoff Explorer</h3>
+        </div>
+        <div class="predictor-form">
+          <select id="cutoffCollege">
+            <option value="">Select College</option>
+            <option>DTU Delhi</option>
+            <option>NSUT Delhi</option>
+            <option>IIITD Delhi</option>
+            <option>IGDTUW</option>
+          </select>
+          <select id="cutoffBranch">
+            <option value="">Select Branch</option>
+            <option>Computer Science</option>
+            <option>Information Technology</option>
+            <option>Electronics & Communication</option>
+            <option>Mechanical</option>
+            <option>Civil</option>
+          </select>
+          <select id="cutoffYear">
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+          </select>
+          <button class="btn-secondary full-w" onclick="showCutoff()">View Cutoffs →</button>
+        </div>
+        <div id="cutoffResults" class="predictor-results hidden"></div>
+      </div>
+
+    </div>
+
+    <!-- PREFERENCE LIST BUILDER -->
+    <div class="section-header" style="margin-top:3rem"><h2>Preference List Builder</h2></div>
+    <div class="pref-builder">
+      <div class="pref-available">
+        <h4>Available Options <span class="tag">Drag to add</span></h4>
+        <div class="pref-items" id="prefAvailable">
+          <div class="pref-item draggable" draggable="true" data-id="1">DTU — Computer Science (General)</div>
+          <div class="pref-item draggable" draggable="true" data-id="2">DTU — IT (General)</div>
+          <div class="pref-item draggable" draggable="true" data-id="3">NSUT — CSE (General)</div>
+          <div class="pref-item draggable" draggable="true" data-id="4">NSUT — IT (General)</div>
+          <div class="pref-item draggable" draggable="true" data-id="5">IIITD — CSE (General)</div>
+          <div class="pref-item draggable" draggable="true" data-id="6">IGDTUW — IT (General)</div>
+          <div class="pref-item draggable" draggable="true" data-id="7">DTU — ECE (General)</div>
+          <div class="pref-item draggable" draggable="true" data-id="8">NSUT — ECE (General)</div>
+        </div>
+      </div>
+      <div class="pref-list">
+        <h4>Your Preference List <span class="tag" id="prefCount">0 added</span></h4>
+        <div class="pref-drop-zone" id="prefList">
+          <p class="pref-empty-msg">Drag options here to build your list</p>
+        </div>
+        <button class="btn-secondary" onclick="clearPrefList()" style="margin-top:1rem">Clear List</button>
+      </div>
+    </div>
+
+    <!-- STRATEGY GUIDE -->
+    <div class="section-header" style="margin-top:3rem"><h2>Strategy Guide</h2></div>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="step-num">01</div>
+        <h4>Lock Your Rank</h4>
+        <p>Know exactly where you stand. Check JEE Mains scorecard and normalize your rank.</p>
+      </div>
+      <div class="strategy-card">
+        <div class="step-num">02</div>
+        <h4>Research Cutoffs</h4>
+        <p>Study 3 years of cutoff data for your target colleges and branches. Spot trends.</p>
+      </div>
+      <div class="strategy-card">
+        <div class="step-num">03</div>
+        <h4>Build Your List</h4>
+        <p>Aim for 20–25 preferences. Mix aspirational, realistic, and safe options.</p>
+      </div>
+      <div class="strategy-card">
+        <div class="step-num">04</div>
+        <h4>Stay Updated</h4>
+        <p>Check JAC Delhi portal daily during counseling rounds. Deadlines are strict.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COUNSELING SUPPORT -->
+  <div class="section alt-bg">
+    <div class="section-header"><h2>Counseling Support</h2></div>
+    <div class="support-grid">
+
+      <!-- Document Checklist -->
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-icon">📂</span><h3>Document Checklist</h3></div>
+        <div class="checklist" id="docChecklist">
+          <label class="check-item"><input type="checkbox" /><span>JEE Main Scorecard</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Class 10 Marksheet</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Class 12 Marksheet</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Category Certificate (if applicable)</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Domicile Certificate (Delhi)</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Aadhar Card</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Passport Size Photos (×6)</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Income Certificate (if applicable)</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Migration Certificate</span></label>
+          <label class="check-item"><input type="checkbox" /><span>Character Certificate</span></label>
+        </div>
+        <div class="doc-progress">
+          <div class="doc-prog-label"><span>Progress</span><span id="docProgPct">0%</span></div>
+          <div class="prog-bar"><div class="prog-fill" id="docProgFill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Important Links -->
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-icon">🔗</span><h3>Official Portals</h3></div>
+        <div class="links-list">
+          <a href="https://www.igdtuw.ac.in" target="_blank" class="official-link">
+            <span>🏫</span><div><strong>IGDTUW</strong><small>igdtuw.ac.in</small></div><span>↗</span>
+          </a>
+          <a href="https://www.iiitd.ac.in" target="_blank" class="official-link">
+            <span>🏫</span><div><strong>IIITD</strong><small>iiitd.ac.in</small></div><span>↗</span>
+          </a>
+          <a href="https://dtu.ac.in" target="_blank" class="official-link">
+            <span>🏫</span><div><strong>DTU Delhi</strong><small>dtu.ac.in</small></div><span>↗</span>
+          </a>
+          <a href="https://nsut.ac.in" target="_blank" class="official-link">
+            <span>🏫</span><div><strong>NSUT Delhi</strong><small>nsut.ac.in</small></div><span>↗</span>
+          </a>
+          <a href="https://jacdelhi.admissions.nic.in" target="_blank" class="official-link">
+            <span>🌐</span><div><strong>JAC Delhi Portal</strong><small>Official Counseling</small></div><span>↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-header"><h2>Frequently Asked Questions</h2></div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is JAC Delhi counseling? <span class="faq-icon">+</span></div>
+        <div class="faq-a">JAC (Joint Admission Counseling) Delhi is the centralized counseling process for admission to Delhi's top engineering colleges — DTU, NSUT, IIITD, IGDTUW, and others — based on JEE Main ranks.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How many rounds are there in JAC Delhi? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Typically 3–4 rounds. Round 1 and 2 are the primary rounds. Round 3 and Spot Round fill remaining seats. After each round, you can upgrade or stay with your current seat.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What documents are needed for document verification? <span class="faq-icon">+</span></div>
+        <div class="faq-a">You need your JEE Scorecard, Class 10 & 12 marksheets, Aadhar, domicile certificate, category certificate (if applicable), and passport size photos. Check our checklist above for the full list.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I upgrade my seat in later rounds? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes! After Round 1, you can opt for "Upgrade" during subsequent rounds. If your preferred college/branch becomes available, your seat gets upgraded automatically based on your preference list order.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is there a fee during registration? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes, a registration fee is charged (typically ₹1,000–₹2,000). Additionally, a seat acceptance fee is required once a seat is allotted. Refund policies apply if you withdraw before deadlines.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ COMMUNITY PAGE ═══ -->
+<section class="page" id="page-community">
+  <div class="page-hero">
+    <span class="section-label">Students & Seniors</span>
+    <h1>The <span class="gradient-text">Community</span></h1>
+    <p>Real help from real people. Ask doubts, join groups, and get mentored.</p>
+  </div>
+
+  <div class="section">
+    <!-- ASK A DOUBT -->
+    <div class="section-header"><h2>Ask a Doubt</h2></div>
+    <div class="doubt-box">
+      <textarea id="doubtInput" placeholder="Type your question here… e.g. 'What's the cutoff for DTU CSE for OBC category in Round 2?'" rows="4"></textarea>
+      <div class="doubt-meta">
+        <input type="text" id="doubtName" placeholder="Your name (optional)" />
+        <button class="btn-primary" onclick="submitDoubt()">Submit Question ↗</button>
+      </div>
+      <div id="doubtConfirm" class="doubt-confirm hidden"></div>
+    </div>
+
+    <!-- COMMUNITY GROUPS -->
+    <div class="section-header" style="margin-top:3rem"><h2>Join a Group</h2></div>
+    <div class="groups-grid">
+      <a href="https://chat.whatsapp.com/EKT1kICdRaXAARolPkj4g4" target="_blank" class="group-card">
+        <div class="group-icon">🏛️</div>
+        <div class="group-info"><h4>JAC Delhi Community</h4><p>Main counseling discussion group for all JAC Delhi aspirants</p></div>
+        <div class="group-join">Join <span>↗</span></div>
+      </a>
+      <a href="https://chat.whatsapp.com/GvFH3i3PDuYFo2geoCYX8m" target="_blank" class="group-card">
+        <div class="group-icon">⚙️</div>
+        <div class="group-info"><h4>DTU Queries</h4><p>Everything about DTU — admissions, branches, hostel, campus</p></div>
+        <div class="group-join">Join <span>↗</span></div>
+      </a>
+      <a href="https://chat.whatsapp.com/KKADODADa3V0O3befqc99K" target="_blank" class="group-card">
+        <div class="group-icon">🔬</div>
+        <div class="group-info"><h4>NSUT Queries</h4><p>NSUT-specific discussions, cutoffs and campus info</p></div>
+        <div class="group-join">Join <span>↗</span></div>
+      </a>
+      <a href="https://chat.whatsapp.com/FUr7iuB4k8uCxTtiq9j91f" target="_blank" class="group-card">
+        <div class="group-icon">💻</div>
+        <div class="group-info"><h4>IIITD Queries</h4><p>All about IIITD — research culture, courses, placements</p></div>
+        <div class="group-join">Join <span>↗</span></div>
+      </a>
+      <a href="https://chat.whatsapp.com/H5a6eb79fkc51yYdC6SC2a" target="_blank" class="group-card">
+        <div class="group-icon">🌸</div>
+        <div class="group-info"><h4>IGDTUW Queries</h4><p>Women's technical university — admissions and campus life</p></div>
+        <div class="group-join">Join <span>↗</span></div>
+      </a>
+      <a href="https://chat.whatsapp.com/JWcgajvthym16fMy7LpOwt" target="_blank" class="group-card">
+        <div class="group-icon">📄</div>
+        <div class="group-info"><h4>Document Help</h4><p>Get help with document verification, formats and submission</p></div>
+        <div class="group-join">Join <span>↗</span></div>
+      </a>
+      <a href="https://chat.whatsapp.com/GsQAgT139iN2b0K0VGP9zL" target="_blank" class="group-card full-span">
+        <div class="group-icon">💬</div>
+        <div class="group-info"><h4>General Chat</h4><p>General discussion — college life, tips, memes and everything else</p></div>
+        <div class="group-join">Join <span>↗</span></div>
+      </a>
+    </div>
+
+    <!-- MEET SECTION -->
+    <div class="section-header" style="margin-top:3rem"><h2>Request a Meet</h2></div>
+    <div class="meet-grid">
+      <div class="meet-form-card">
+        <h4>Talk to a Senior</h4>
+        <p>Request a 1:1 session with a DTU/NSUT/IIITD senior who's been through counseling.</p>
+        <div class="meet-form">
+          <input type="text" id="meetName" placeholder="Your name" />
+          <input type="text" id="meetCollege" placeholder="Target college / query topic" />
+          <select id="meetType">
+            <option>Counseling Strategy</option>
+            <option>Branch Selection</option>
+            <option>Campus Life Q&A</option>
+            <option>Document Help</option>
+            <option>General Guidance</option>
+          </select>
+          <button class="btn-primary" onclick="requestMeet()">Request Meet ↗</button>
+        </div>
+        <div id="meetConfirm" class="doubt-confirm hidden"></div>
+      </div>
+      <div class="meet-upcoming">
+        <h4>Upcoming Sessions</h4>
+        <div class="meet-session">
+          <div class="session-date">June 15, 2025</div>
+          <div class="session-info">
+            <strong>JAC Delhi Counseling Q&A</strong>
+            <p>Live session with DTU seniors on Round 1 strategy</p>
+          </div>
+          <span class="session-badge soon">Soon</span>
+        </div>
+        <div class="meet-session">
+          <div class="session-date">June 22, 2025</div>
+          <div class="session-info">
+            <strong>Branch Selection Masterclass</strong>
+            <p>CS vs IT vs ECE — what really matters for placements</p>
+          </div>
+          <span class="session-badge planned">Planned</span>
+        </div>
+        <div class="meet-session">
+          <div class="session-date">July 5, 2025</div>
+          <div class="session-info">
+            <strong>Document Verification Day</strong>
+            <p>Walk-through of every document needed for JAC</p>
+          </div>
+          <span class="session-badge planned">Planned</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ EXPLORE PAGE ═══ -->
+<section class="page" id="page-explore">
+  <div class="page-hero">
+    <span class="section-label">Know Your College</span>
+    <h1><span class="gradient-text">Explore</span> Delhi's Best</h1>
+    <p>Deep-dive into the top engineering colleges of Delhi. Compare. Decide. Commit.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><h2>Top Colleges</h2></div>
+    <div class="college-grid">
+
+      <!-- DTU -->
+      <div class="college-card">
+        <div class="college-img dtu-img">
+          <div class="college-img-overlay">
+            <span class="college-tag">Est. 1941</span>
+          </div>
+        </div>
+        <div class="college-body">
+          <h3>Delhi Technological University</h3>
+          <div class="college-meta">
+            <span>📍 Rohini, Delhi</span>
+            <span>🏅 NIRF Top 50</span>
+          </div>
+          <p>One of India's oldest and most prestigious technical universities. Known for its strong placements in CS, a vibrant campus culture, and the legendary Engifest. DTU produces leaders across tech, research, and entrepreneurship.</p>
+          <div class="college-stats">
+            <div class="cs"><div class="cs-label">Avg Package</div><div class="cs-val">₹18 LPA</div></div>
+            <div class="cs"><div class="cs-label">Highest</div><div class="cs-val">₹1.8 Cr</div></div>
+            <div class="cs"><div class="cs-label">Seats (CSE)</div><div class="cs-val">~120</div></div>
+          </div>
+          <div class="college-branches">
+            <span class="branch-tag">CS</span><span class="branch-tag">IT</span><span class="branch-tag">ECE</span><span class="branch-tag">Mech</span><span class="branch-tag">Civil</span>
+          </div>
+          <a href="https://dtu.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
+        </div>
+      </div>
+
+      <!-- NSUT -->
+      <div class="college-card">
+        <div class="college-img nsut-img">
+          <div class="college-img-overlay">
+            <span class="college-tag">Est. 1983</span>
+          </div>
+        </div>
+        <div class="college-body">
+          <h3>Netaji Subhas University of Technology</h3>
+          <div class="college-meta">
+            <span>📍 Dwarka, Delhi</span>
+            <span>🏅 NIRF Ranked</span>
+          </div>
+          <p>A rapidly growing technical university with two campuses (East & West). NSUT is known for its strong CS and IT programs, active entrepreneurship culture, and consistent improvement in placement records.</p>
+          <div class="college-stats">
+            <div class="cs"><div class="cs-label">Avg Package</div><div class="cs-val">₹14 LPA</div></div>
+            <div class="cs"><div class="cs-label">Highest</div><div class="cs-val">₹80 LPA</div></div>
+            <div class="cs"><div class="cs-label">Seats (CSE)</div><div class="cs-val">~90</div></div>
+          </div>
+          <div class="college-branches">
+            <span class="branch-tag">CSE</span><span class="branch-tag">IT</span><span class="branch-tag">ECE</span><span class="branch-tag">Bio-Tech</span>
+          </div>
+          <a href="https://nsut.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
+        </div>
+      </div>
+
+      <!-- IIITD -->
+      <div class="college-card">
+        <div class="college-img iiitd-img">
+          <div class="college-img-overlay">
+            <span class="college-tag">Est. 2008</span>
+          </div>
+        </div>
+        <div class="college-body">
+          <h3>IIIT Delhi</h3>
+          <div class="college-meta">
+            <span>📍 Okhla, Delhi</span>
+            <span>🏅 Research Focused</span>
+          </div>
+          <p>A research-intensive institute with a tight-knit community and cutting-edge curriculum. IIITD offers unique interdisciplinary programs in CS+X (CB, SS, Design, etc.) and is known for high research output and excellent faculty-student ratio.</p>
+          <div class="college-stats">
+            <div class="cs"><div class="cs-label">Avg Package</div><div class="cs-val">₹22 LPA</div></div>
+            <div class="cs"><div class="cs-label">Highest</div><div class="cs-val">₹1.2 Cr</div></div>
+            <div class="cs"><div class="cs-label">Seats (CSE)</div><div class="cs-val">~160</div></div>
+          </div>
+          <div class="college-branches">
+            <span class="branch-tag">CSE</span><span class="branch-tag">ECE</span><span class="branch-tag">CB</span><span class="branch-tag">Design</span>
+          </div>
+          <a href="https://www.iiitd.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
+        </div>
+      </div>
+
+      <!-- IGDTUW -->
+      <div class="college-card">
+        <div class="college-img igdtuw-img">
+          <div class="college-img-overlay">
+            <span class="college-tag">Est. 1998</span>
+          </div>
+        </div>
+        <div class="college-body">
+          <h3>IGDTUW Delhi</h3>
+          <div class="college-meta">
+            <span>📍 Kashmere Gate, Delhi</span>
+            <span>🏅 Women's Tech University</span>
+          </div>
+          <p>India's first technical university exclusively for women. IGDTUW (formerly IGIT) offers a safe, empowering campus environment with strong technical programs, placement support, and a growing reputation in Delhi's tech ecosystem.</p>
+          <div class="college-stats">
+            <div class="cs"><div class="cs-label">Avg Package</div><div class="cs-val">₹10 LPA</div></div>
+            <div class="cs"><div class="cs-label">Highest</div><div class="cs-val">₹45 LPA</div></div>
+            <div class="cs"><div class="cs-label">Seats (IT)</div><div class="cs-val">~120</div></div>
+          </div>
+          <div class="college-branches">
+            <span class="branch-tag">IT</span><span class="branch-tag">ECE</span><span class="branch-tag">MAE</span><span class="branch-tag">BT</span>
+          </div>
+          <a href="https://www.igdtuw.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BRANCH COMPARISON -->
+    <div class="section-header" style="margin-top:3rem"><h2>Branch Comparison</h2></div>
+    <div class="branch-compare">
+      <div class="branch-filter">
+        <button class="branch-btn active" onclick="filterBranch('all', this)">All</button>
+        <button class="branch-btn" onclick="filterBranch('ai', this)">AI / ML</button>
+        <button class="branch-btn" onclick="filterBranch('core', this)">Core</button>
+        <button class="branch-btn" onclick="filterBranch('software', this)">Software</button>
+      </div>
+      <div class="branch-table" id="branchTable">
+        <div class="bt-row bt-header">
+          <div>Branch</div><div>Type</div><div>Avg CTC</div><div>Demand</div><div>Scope</div>
+        </div>
+        <div class="bt-row" data-type="software ai">
+          <div><strong>Computer Science</strong></div><div><span class="type-tag software">Software</span></div><div>₹18–35 LPA</div><div class="demand high">🔥 Very High</div><div>Tech, Product, AI</div>
+        </div>
+        <div class="bt-row" data-type="software">
+          <div><strong>Information Technology</strong></div><div><span class="type-tag software">Software</span></div><div>₹15–28 LPA</div><div class="demand high">🔥 High</div><div>SDE, DevOps, Cloud</div>
+        </div>
+        <div class="bt-row" data-type="ai">
+          <div><strong>AI & Data Science</strong></div><div><span class="type-tag ai">AI/ML</span></div><div>₹20–40 LPA</div><div class="demand high">🔥 Booming</div><div>ML, LLMs, Research</div>
+        </div>
+        <div class="bt-row" data-type="core">
+          <div><strong>Electronics & Comm</strong></div><div><span class="type-tag core">Core</span></div><div>₹8–20 LPA</div><div class="demand med">● Moderate</div><div>VLSI, Embedded, IoT</div>
+        </div>
+        <div class="bt-row" data-type="core">
+          <div><strong>Mechanical</strong></div><div><span class="type-tag core">Core</span></div><div>₹6–14 LPA</div><div class="demand low">○ Moderate</div><div>Mfg, Auto, PSUs</div>
+        </div>
+        <div class="bt-row" data-type="core">
+          <div><strong>Civil</strong></div><div><span class="type-tag core">Core</span></div><div>₹5–12 LPA</div><div class="demand low">○ Stable</div><div>Infra, Govt, Real Estate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ PREP PAGE ═══ -->
+<section class="page" id="page-prep">
+  <div class="page-hero">
+    <span class="section-label">Get Ready</span>
+    <h1>College <span class="gradient-text">Prep</span></h1>
+    <p>What to expect, what to avoid, and how to hit the ground running.</p>
+  </div>
+
+  <div class="section">
+    <div class="prep-grid">
+
+      <div class="prep-card big-card">
+        <div class="prep-card-icon">🗺️</div>
+        <h3>Your First Year Roadmap</h3>
+        <div class="roadmap">
+          <div class="rm-step">
+            <div class="rm-dot"></div>
+            <div class="rm-content">
+              <strong>Month 1–2: Orientation</strong>
+              <p>Get your ID card, join societies, attend all induction events. Don't skip.</p>
+            </div>
+          </div>
+          <div class="rm-step">
+            <div class="rm-dot"></div>
+            <div class="rm-content">
+              <strong>Month 3–4: Foundation</strong>
+              <p>Focus on basic programming (C, Python), Mathematics, and DSA fundamentals.</p>
+            </div>
+          </div>
+          <div class="rm-step">
+            <div class="rm-dot"></div>
+            <div class="rm-content">
+              <strong>Month 5–6: Build</strong>
+              <p>Start your first project. Join a technical club. Begin competitive programming.</p>
+            </div>
+          </div>
+          <div class="rm-step">
+            <div class="rm-dot"></div>
+            <div class="rm-content">
+              <strong>Month 7–8: Grow</strong>
+              <p>Apply for your first internship (off-campus). Build your GitHub profile.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-card-icon">🎓</div>
+        <h3>What to Expect in College</h3>
+        <ul class="prep-list">
+          <li>Freedom you've never had — handle it wisely</li>
+          <li>Huge skill gap between you and seniors — that's normal</li>
+          <li>Grades matter less than projects + skills for tech roles</li>
+          <li>CGPA matters for core/govt/MBA/higher studies</li>
+          <li>The first 2 semesters set your GPA trend — don't slip</li>
+          <li>Network relentlessly — your batchmates are future colleagues</li>
+        </ul>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-card-icon">⚠️</div>
+        <h3>Common Mistakes to Avoid</h3>
+        <ul class="prep-list danger">
+          <li>Skipping classes thinking "I'll study later"</li>
+          <li>Not joining any society or club in Sem 1</li>
+          <li>Waiting for placements to start coding</li>
+          <li>Comparing yourself to everyone on LinkedIn</li>
+          <li>Neglecting physical and mental health</li>
+          <li>Underestimating internship season deadlines</li>
+        </ul>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-card-icon">💡</div>
+        <h3>Skills to Start Now</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">DSA</span>
+          <span class="skill-pill">Git & GitHub</span>
+          <span class="skill-pill">Linux Basics</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">HTML/CSS</span>
+          <span class="skill-pill">Problem Solving</span>
+          <span class="skill-pill">Communication</span>
+        </div>
+        <p style="margin-top:1rem;color:var(--text-muted);font-size:.9rem">Start these before your first semester even begins. You'll thank yourself later.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ DASHBOARD PAGE ═══ -->
+<section class="page" id="page-dashboard">
+  <div class="page-hero">
+    <span class="section-label">Your Space</span>
+    <h1>My <span class="gradient-text">Dashboard</span></h1>
+    <p>Track tasks, documents, and notes — all in one place.</p>
+  </div>
+
+  <div class="section">
+    <div class="dashboard-grid">
+
+      <!-- TO-DO LIST -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>📝 To-Do List</h3>
+          <span class="task-count" id="taskCount">0 tasks</span>
+        </div>
+        <div class="todo-input-row">
+          <input type="text" id="todoInput" placeholder="Add a task…" onkeypress="if(event.key==='Enter')addTask()" />
+          <button class="btn-primary sm" onclick="addTask()">Add</button>
+        </div>
+        <ul class="todo-list" id="todoList">
+          <li class="todo-empty">No tasks yet. Add one above!</li>
+        </ul>
+      </div>
+
+      <!-- DOCUMENT PROGRESS -->
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>📂 Document Progress</h3></div>
+        <div class="doc-progress-list">
+          <div class="dp-item">
+            <div class="dp-label"><span>JEE Scorecard</span><span class="dp-pct">100%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+          </div>
+          <div class="dp-item">
+            <div class="dp-label"><span>Class 12 Docs</span><span class="dp-pct">80%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:80%"></div></div>
+          </div>
+          <div class="dp-item">
+            <div class="dp-label"><span>Category Certificate</span><span class="dp-pct">60%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:60%"></div></div>
+          </div>
+          <div class="dp-item">
+            <div class="dp-label"><span>Domicile Certificate</span><span class="dp-pct">40%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:40%"></div></div>
+          </div>
+          <div class="dp-item">
+            <div class="dp-label"><span>Passport Photos</span><span class="dp-pct">20%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:20%"></div></div>
+          </div>
+        </div>
+        <div class="overall-progress">
+          <div class="dp-label"><strong>Overall Readiness</strong><strong id="overallPct">60%</strong></div>
+          <div class="prog-bar large"><div class="prog-fill" style="width:60%"></div></div>
+        </div>
+      </div>
+
+      <!-- NOTES SECTION -->
+      <div class="dash-card full-width-card">
+        <div class="dash-card-header">
+          <h3>🗒️ Quick Notes</h3>
+          <button class="btn-secondary sm" onclick="saveNote()">Save</button>
+        </div>
+        <textarea id="notepad" placeholder="Jot down anything — cutoff ranks, important dates, questions to ask seniors…" rows="8"></textarea>
+        <div id="noteSaved" class="doubt-confirm hidden" style="margin-top:.75rem"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ RESOURCES PAGE ═══ -->
+<section class="page" id="page-resources">
+  <div class="page-hero">
+    <span class="section-label">Everything Curated</span>
+    <h1>Resource <span class="gradient-text">Hub</span></h1>
+    <p>Official portals, guides, downloads — everything in one bookmark-worthy place.</p>
+  </div>
+
+  <div class="section">
+    <div class="resources-grid">
+
+      <div class="res-category">
+        <h3>🌐 Important Websites</h3>
+        <div class="res-links">
+          <a href="https://jacdelhi.admissions.nic.in" target="_blank" class="res-link-card">
+            <div class="rl-icon">🏛️</div>
+            <div><strong>JAC Delhi Official</strong><p>Registration, choice filling, seat allotment</p></div>
+          </a>
+          <a href="https://jeemain.nta.ac.in" target="_blank" class="res-link-card">
+            <div class="rl-icon">📋</div>
+            <div><strong>JEE Main NTA Portal</strong><p>Results, scorecard download, official rank</p></div>
+          </a>
+          <a href="https://dtu.ac.in" target="_blank" class="res-link-card">
+            <div class="rl-icon">🏫</div>
+            <div><strong>DTU Delhi</strong><p>Official university portal</p></div>
+          </a>
+          <a href="https://nsut.ac.in" target="_blank" class="res-link-card">
+            <div class="rl-icon">🏫</div>
+            <div><strong>NSUT Delhi</strong><p>Official university portal</p></div>
+          </a>
+          <a href="https://www.iiitd.ac.in" target="_blank" class="res-link-card">
+            <div class="rl-icon">🏫</div>
+            <div><strong>IIITD Delhi</strong><p>Official institute portal</p></div>
+          </a>
+          <a href="https://www.igdtuw.ac.in" target="_blank" class="res-link-card">
+            <div class="rl-icon">🏫</div>
+            <div><strong>IGDTUW</strong><p>Official university portal</p></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="res-category">
+        <h3>📥 Downloads & Guides</h3>
+        <div class="download-list">
+          <div class="dl-item">
+            <div class="dl-info"><div class="dl-icon">📄</div><div><strong>Document Checklist PDF</strong><p>Complete list of documents required for JAC Delhi</p></div></div>
+            <button class="btn-primary sm" onclick="fakeDownload('Document_Checklist.pdf')">↓ Download</button>
+          </div>
+          <div class="dl-item">
+            <div class="dl-info"><div class="dl-icon">📊</div><div><strong>Cutoff Data 2022–24</strong><p>Historical cutoff ranks for all major branches</p></div></div>
+            <button class="btn-primary sm" onclick="fakeDownload('Cutoff_Data_2022_24.xlsx')">↓ Download</button>
+          </div>
+          <div class="dl-item">
+            <div class="dl-info"><div class="dl-icon">🗺️</div><div><strong>Counseling Roadmap</strong><p>Step-by-step JAC Delhi counseling guide</p></div></div>
+            <button class="btn-primary sm" onclick="fakeDownload('Counseling_Roadmap.pdf')">↓ Download</button>
+          </div>
+          <div class="dl-item">
+            <div class="dl-info"><div class="dl-icon">📋</div><div><strong>Preference List Template</strong><p>Excel template to plan your preference order</p></div></div>
+            <button class="btn-primary sm" onclick="fakeDownload('Preference_Template.xlsx')">↓ Download</button>
+          </div>
+          <div class="dl-item">
+            <div class="dl-info"><div class="dl-icon">💼</div><div><strong>Branch Comparison Sheet</strong><p>CS vs IT vs ECE — full comparison for JAC colleges</p></div></div>
+            <button class="btn-primary sm" onclick="fakeDownload('Branch_Comparison.pdf')">↓ Download</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ ABOUT / FOUNDER PAGE ═══ -->
+<section class="page" id="page-about">
+  <div class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="about-hero-content">
+      <span class="section-label">The Story Behind EduLight</span>
+      <h1>Meet the Builder<br/><span class="gradient-text">Behind EduLight</span></h1>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="founder-layout">
+
+      <!-- LEFT: Photo Card -->
+      <div class="founder-card">
+        <div class="founder-avatar">
+          <div class="avatar-placeholder">CR</div>
+          <div class="avatar-glow"></div>
+        </div>
+        <h2>Chirag</h2>
+        <p class="founder-title">BTech IT · DTU Delhi · Batch 2029</p>
+        <div class="founder-social">
+          <a href="https://www.linkedin.com/in/chirag-rao-b46740379" target="_blank" class="social-btn linkedin">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.instagram.com/chirag_dtu" target="_blank" class="social-btn insta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+          <a href="mailto:justchirag28@gmail.com" class="social-btn email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Story -->
+      <div class="founder-story">
+        <div class="story-block">
+          <h3>Hi, I'm Chirag 👋</h3>
+          <p>A BTech IT student (Batch 2029) at Delhi Technological University, building EduLight to simplify the journey from JEE rank to the right college decision.</p>
+          <p>I created EduLight because I saw firsthand how confusing and stressful the counseling process is — scattered information, contradictory advice, and no single reliable source for JAC Delhi aspirants. This platform is my attempt to fix that.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>Roles & Achievements</h3>
+          <div class="achievements-grid">
+            <div class="achievement-item">
+              <span class="ach-icon">🎓</span>
+              <div><strong>Class Representative</strong><p>DTU, IT Department</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">💼</span>
+              <div><strong>Placement Committee Member</strong><p>DTU Placements Cell</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">🏆</span>
+              <div><strong>Dell Aspire Scholar</strong><p>Merit-based scholarship recipient</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">🔢</span>
+              <div><strong>MACS DTU Member</strong><p>Mathematics & Computing Society</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">🎨</span>
+              <div><strong>Visual Artist & Creative Designer</strong><p>Engifest DTU</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">✨</span>
+              <div><strong>Glykeria Fashion Model</strong><p>DTU Fashion Society</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">🌍</span>
+              <div><strong>Social Volunteer</strong><p>Rotaract Club of DTU Regency</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-block why-block">
+          <h3>Why I Built This</h3>
+          <blockquote>
+            "I saw students struggling with confusion, misinformation and scattered resources during counseling. Friends were making college decisions based on rumors instead of data. EduLight is built to solve that — one clear, honest, student-first platform for every JAC Delhi aspirant."
+          </blockquote>
+          <p>— Chirag, Founder, EduLight</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><span class="logo-icon">◈</span> EduLight</div>
+      <p>From Rank to Right Path.<br/>Built with purpose by <a href="#" onclick="showPage('about')" class="footer-chirag-link">Chirag ↗</a></p>
+      <p class="footer-email">📧 edulight.contact@gmail.com</p>
+    </div>
+    <div class="footer-links">
+      <h5>Navigate</h5>
+      <a href="#" onclick="showPage('admission')">Admission</a>
+      <a href="#" onclick="showPage('community')">Community</a>
+      <a href="#" onclick="showPage('explore')">Explore</a>
+      <a href="#" onclick="showPage('prep')">Prep</a>
+      <a href="#" onclick="showPage('dashboard')">Dashboard</a>
+      <a href="#" onclick="showPage('resources')">Resources</a>
+    </div>
+    <div class="footer-links">
+      <h5>Colleges</h5>
+      <a href="https://dtu.ac.in" target="_blank">DTU Delhi</a>
+      <a href="https://nsut.ac.in" target="_blank">NSUT Delhi</a>
+      <a href="https://www.iiitd.ac.in" target="_blank">IIITD Delhi</a>
+      <a href="https://www.igdtuw.ac.in" target="_blank">IGDTUW</a>
+    </div>
+    <div class="footer-links">
+      <h5>Community</h5>
+      <a href="https://chat.whatsapp.com/EKT1kICdRaXAARolPkj4g4" target="_blank">JAC Delhi Group</a>
+      <a href="https://chat.whatsapp.com/GvFH3i3PDuYFo2geoCYX8m" target="_blank">DTU Queries</a>
+      <a href="https://chat.whatsapp.com/GsQAgT139iN2b0K0VGP9zL" target="_blank">General Chat</a>
+      <a href="#" onclick="showPage('about')">About Founder</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 EduLight. Made with ❤️ for JEE aspirants across India.</p>
+    <p>Not affiliated with JAC Delhi or any university. Data is indicative only.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Editor folders
+.vscode/
+.idea/
+
+# Environment (agar kabhi frontend mein .env use karo)
+.env
+.env.local
