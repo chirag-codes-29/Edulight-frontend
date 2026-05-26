@@ -219,15 +219,68 @@
     <div class="pref-builder">
       <div class="pref-available">
         <h4>Available Options <span class="tag">Drag to add</span></h4>
+        <div class="pref-college-filter">
+          <label><input type="checkbox" id="filter-dtu" checked onchange="filterPrefOptions()" /> DTU</label>
+          <label><input type="checkbox" id="filter-nsut" checked onchange="filterPrefOptions()" /> NSUT</label>
+          <label><input type="checkbox" id="filter-iiitd" checked onchange="filterPrefOptions()" /> IIITD</label>
+          <label><input type="checkbox" id="filter-igdtuw" checked onchange="filterPrefOptions()" /> IGDTUW</label>
+        </div>
         <div class="pref-items" id="prefAvailable">
-          <div class="pref-item draggable" draggable="true" data-id="1">DTU — Computer Science (General)</div>
-          <div class="pref-item draggable" draggable="true" data-id="2">DTU — IT (General)</div>
-          <div class="pref-item draggable" draggable="true" data-id="3">NSUT — CSE (General)</div>
-          <div class="pref-item draggable" draggable="true" data-id="4">NSUT — IT (General)</div>
-          <div class="pref-item draggable" draggable="true" data-id="5">IIITD — CSE (General)</div>
-          <div class="pref-item draggable" draggable="true" data-id="6">IGDTUW — IT (General)</div>
-          <div class="pref-item draggable" draggable="true" data-id="7">DTU — ECE (General)</div>
-          <div class="pref-item draggable" draggable="true" data-id="8">NSUT — ECE (General)</div>
+          <div class="pref-item draggable" draggable="true" data-id="1" data-college="dtu">DTU — BT</div>
+          <div class="pref-item draggable" draggable="true" data-id="2" data-college="dtu">DTU — CHE</div>
+          <div class="pref-item draggable" draggable="true" data-id="3" data-college="dtu">DTU — CE</div>
+          <div class="pref-item draggable" draggable="true" data-id="4" data-college="dtu">DTU — CSE</div>
+          <div class="pref-item draggable" draggable="true" data-id="5" data-college="dtu">DTU — CSDA</div>
+          <div class="pref-item draggable" draggable="true" data-id="6" data-college="dtu">DTU — ECE</div>
+          <div class="pref-item draggable" draggable="true" data-id="7" data-college="dtu">DTU — EVDT</div>
+          <div class="pref-item draggable" draggable="true" data-id="8" data-college="dtu">DTU — EE</div>
+          <div class="pref-item draggable" draggable="true" data-id="9" data-college="dtu">DTU — ENE</div>
+          <div class="pref-item draggable" draggable="true" data-id="10" data-college="dtu">DTU — EP</div>
+          <div class="pref-item draggable" draggable="true" data-id="11" data-college="dtu">DTU — IT</div>
+          <div class="pref-item draggable" draggable="true" data-id="12" data-college="dtu">DTU — ITCY</div>
+          <div class="pref-item draggable" draggable="true" data-id="13" data-college="dtu">DTU — MCE</div>
+          <div class="pref-item draggable" draggable="true" data-id="14" data-college="dtu">DTU — ME</div>
+          <div class="pref-item draggable" draggable="true" data-id="15" data-college="dtu">DTU — MAE</div>
+          <div class="pref-item draggable" draggable="true" data-id="16" data-college="dtu">DTU — MAM</div>
+          <div class="pref-item draggable" draggable="true" data-id="17" data-college="dtu">DTU — PIE</div>
+          <div class="pref-item draggable" draggable="true" data-id="18" data-college="dtu">DTU — SE</div>
+          <div class="pref-item draggable" draggable="true" data-id="19" data-college="nsut">NSUT — BT</div>
+          <div class="pref-item draggable" draggable="true" data-id="20" data-college="nsut">NSUT — CSE</div>
+          <div class="pref-item draggable" draggable="true" data-id="21" data-college="nsut">NSUT — CSDS</div>
+          <div class="pref-item draggable" draggable="true" data-id="22" data-college="nsut">NSUT — CSAI</div>
+          <div class="pref-item draggable" draggable="true" data-id="23" data-college="nsut">NSUT — EE</div>
+          <div class="pref-item draggable" draggable="true" data-id="24" data-college="nsut">NSUT — ECE</div>
+          <div class="pref-item draggable" draggable="true" data-id="25" data-college="nsut">NSUT — EVDT</div>
+          <div class="pref-item draggable" draggable="true" data-id="26" data-college="nsut">NSUT — IT</div>
+          <div class="pref-item draggable" draggable="true" data-id="27" data-college="nsut">NSUT — ITNS</div>
+          <div class="pref-item draggable" draggable="true" data-id="28" data-college="nsut">NSUT — ICE</div>
+          <div class="pref-item draggable" draggable="true" data-id="29" data-college="nsut">NSUT — MAC</div>
+          <div class="pref-item draggable" draggable="true" data-id="30" data-college="nsut">NSUT — ME</div>
+          <div class="pref-item draggable" draggable="true" data-id="31" data-college="nsut">NSUT — CSDA (East)</div>
+          <div class="pref-item draggable" draggable="true" data-id="32" data-college="nsut">NSUT — CIOT (East)</div>
+          <div class="pref-item draggable" draggable="true" data-id="33" data-college="nsut">NSUT — ECAM (East)</div>
+          <div class="pref-item draggable" draggable="true" data-id="34" data-college="nsut">NSUT — CE (West)</div>
+          <div class="pref-item draggable" draggable="true" data-id="35" data-college="nsut">NSUT — GI (West)</div>
+          <div class="pref-item draggable" draggable="true" data-id="36" data-college="nsut">NSUT — MEEV (West)</div>
+          <div class="pref-item draggable" draggable="true" data-id="37" data-college="iiitd">IIITD — CSE</div>
+          <div class="pref-item draggable" draggable="true" data-id="38" data-college="iiitd">IIITD — ECE</div>
+          <div class="pref-item draggable" draggable="true" data-id="39" data-college="iiitd">IIITD — CSAM</div>
+          <div class="pref-item draggable" draggable="true" data-id="40" data-college="iiitd">IIITD — CSD</div>
+          <div class="pref-item draggable" draggable="true" data-id="41" data-college="iiitd">IIITD — CSSS</div>
+          <div class="pref-item draggable" draggable="true" data-id="42" data-college="iiitd">IIITD — CSB</div>
+          <div class="pref-item draggable" draggable="true" data-id="43" data-college="iiitd">IIITD — CSAI</div>
+          <div class="pref-item draggable" draggable="true" data-id="44" data-college="iiitd">IIITD — EVE</div>
+          <div class="pref-item draggable" draggable="true" data-id="45" data-college="iiitd">IIITD — CSEcon</div>
+          <div class="pref-item draggable" draggable="true" data-id="46" data-college="igdtuw">IGDTUW — CSE-AI</div>
+          <div class="pref-item draggable" draggable="true" data-id="47" data-college="igdtuw">IGDTUW — CSE</div>
+          <div class="pref-item draggable" draggable="true" data-id="48" data-college="igdtuw">IGDTUW — CSE-CySec</div>
+          <div class="pref-item draggable" draggable="true" data-id="49" data-college="igdtuw">IGDTUW — ECE-AI</div>
+          <div class="pref-item draggable" draggable="true" data-id="50" data-college="igdtuw">IGDTUW — ECE</div>
+          <div class="pref-item draggable" draggable="true" data-id="51" data-college="igdtuw">IGDTUW — IT</div>
+          <div class="pref-item draggable" draggable="true" data-id="52" data-college="igdtuw">IGDTUW — AI&ML</div>
+          <div class="pref-item draggable" draggable="true" data-id="53" data-college="igdtuw">IGDTUW — MAC</div>
+          <div class="pref-item draggable" draggable="true" data-id="54" data-college="igdtuw">IGDTUW — RAIE</div>
+          <div class="pref-item draggable" draggable="true" data-id="55" data-college="igdtuw">IGDTUW — MAE</div>
         </div>
       </div>
       <div class="pref-list">

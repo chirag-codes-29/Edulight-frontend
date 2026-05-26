@@ -277,65 +277,101 @@ let draggedItem = null;
  * Initialize drag-and-drop for preference builder
  */
 function initDragDrop() {
-  const items = document.querySelectorAll('.pref-item.draggable');
   const dropZone = document.getElementById('prefList');
 
-  items.forEach(item => {
+  function bindAvailableItem(item) {
     item.addEventListener('dragstart', e => {
-      draggedItem = item;
+      e.dataTransfer.setData('type', 'new');
+      e.dataTransfer.setData('id', item.dataset.id);
+      e.dataTransfer.setData('text', item.textContent.trim());
       item.classList.add('dragging');
-      e.dataTransfer.effectAllowed = 'copy';
     });
-    item.addEventListener('dragend', () => {
-      draggedItem = null;
-      item.classList.remove('dragging');
+    item.addEventListener('dragend', () => item.classList.remove('dragging'));
+  }
+  document.querySelectorAll('.pref-item.draggable').forEach(bindAvailableItem);
+
+  function bindListItem(el) {
+    el.setAttribute('draggable', 'true');
+    el.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('type', 'reorder');
+      e.dataTransfer.effectAllowed = 'move';
+      el.classList.add('dragging');
+      setTimeout(() => el.classList.add('drag-ghost'), 0);
     });
-  });
+    el.addEventListener('dragend', () => {
+      el.classList.remove('dragging');
+      el.classList.remove('drag-ghost');
+      dropZone.querySelectorAll('.drag-over-item').forEach(i => i.classList.remove('drag-over-item'));
+    });
+  }
 
   if (!dropZone) return;
 
   dropZone.addEventListener('dragover', e => {
     e.preventDefault();
-    dropZone.classList.add('drag-over');
-    e.dataTransfer.dropEffect = 'copy';
+    const draggingEl = dropZone.querySelector('.dragging');
+    if (draggingEl) {
+      const siblings = [...dropZone.querySelectorAll('.pref-item:not(.dragging)')];
+      dropZone.querySelectorAll('.drag-over-item').forEach(i => i.classList.remove('drag-over-item'));
+      const next = siblings.find(s => {
+        const rect = s.getBoundingClientRect();
+        return e.clientY < rect.top + rect.height / 2;
+      });
+      if (next) next.classList.add('drag-over-item');
+    } else {
+      dropZone.classList.add('drag-over');
+    }
   });
 
-  dropZone.addEventListener('dragleave', () => {
-    dropZone.classList.remove('drag-over');
+  dropZone.addEventListener('dragleave', e => {
+    if (!dropZone.contains(e.relatedTarget)) dropZone.classList.remove('drag-over');
   });
 
   dropZone.addEventListener('drop', e => {
     e.preventDefault();
     dropZone.classList.remove('drag-over');
+    const draggingEl = dropZone.querySelector('.dragging');
 
-    if (!draggedItem) return;
-
-    // Check for duplicates
-    const existingIds = [...dropZone.querySelectorAll('.pref-item')].map(el => el.dataset.id);
-    if (existingIds.includes(draggedItem.dataset.id)) {
-      showToast('⚠️ Already in your list!');
+    if (draggingEl) {
+      const siblings = [...dropZone.querySelectorAll('.pref-item:not(.dragging)')];
+      const next = siblings.find(s => {
+        const rect = s.getBoundingClientRect();
+        return e.clientY < rect.top + rect.height / 2;
+      });
+      dropZone.insertBefore(draggingEl, next || null);
+      dropZone.querySelectorAll('.drag-over-item').forEach(i => i.classList.remove('drag-over-item'));
+      updatePrefCount();
       return;
     }
 
-    // Remove empty message
+    const id   = e.dataTransfer.getData('id');
+    const text = e.dataTransfer.getData('text');
+    if (!id) return;
+
+    const existingIds = [...dropZone.querySelectorAll('.pref-item')].map(el => el.dataset.id);
+    if (existingIds.includes(id)) { showToast('⚠️ Already in your list!'); return; }
+
     const emptyMsg = dropZone.querySelector('.pref-empty-msg');
     if (emptyMsg) emptyMsg.remove();
 
-    // Add item to list
     const clone = document.createElement('div');
     clone.className = 'pref-item';
-    clone.dataset.id = draggedItem.dataset.id;
-    clone.innerHTML = `
-      <span>${draggedItem.textContent}</span>
-      <span class="pref-remove" onclick="removePrefItem(this)">✕</span>
-    `;
+    clone.dataset.id = id;
+    clone.innerHTML = `<span>${text}</span><span class="pref-remove" onclick="removePrefItem(this)">✕</span>`;
     dropZone.appendChild(clone);
-
+    bindListItem(clone);
     updatePrefCount();
     showToast('✓ Added to your list!');
   });
 }
 
+function filterPrefOptions() {
+  const colleges = ['dtu','nsut','iiitd','igdtuw'];
+  const active = colleges.filter(c => document.getElementById('filter-' + c)?.checked);
+  document.querySelectorAll('#prefAvailable .pref-item').forEach(item => {
+    item.style.display = active.includes(item.dataset.college) ? '' : 'none';
+  });
+}
 /**
  * Remove an item from the preference list
  */

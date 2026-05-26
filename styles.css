@@ -964,3 +964,26 @@ blockquote {
   .hero-predictor input { min-width:unset; }
   .doubt-meta { flex-direction:column; }
 }
+.pref-college-filter {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.pref-college-filter label {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-main);
+}
+.pref-college-filter input[type=checkbox] {
+  accent-color: var(--teal-dk);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.drag-ghost { opacity: 0.4; }
+.drag-over-item { border-top: 2px solid var(--teal-dk); }
