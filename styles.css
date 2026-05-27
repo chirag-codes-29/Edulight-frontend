@@ -413,7 +413,7 @@ p  { color: var(--text-muted); }
 .tools-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
 
 .tool-card {
-  background: var(--bg-card);
+  background: #0f1623;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding:1.75rem;
@@ -702,7 +702,7 @@ p  { color: var(--text-muted); }
 }
 
 /* BRANCH COMPARE */
-.branch-compare { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
+.branch-compare { background:#0f1623; border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; color:#fff; }
 .branch-filter { padding:1.25rem 1.5rem; border-bottom:1px solid var(--border); display:flex; gap:.5rem; flex-wrap:wrap; }
 .branch-btn {
   padding:.45rem 1.1rem; border-radius:50px;
@@ -717,7 +717,7 @@ p  { color: var(--text-muted); }
 .bt-row {
   display:grid; grid-template-columns:2fr 1fr 1.5fr 1.5fr 2fr;
   padding:.85rem 0; border-bottom:1px solid var(--border);
-  font-size:.875rem; align-items:center;
+  font-size:.875rem; align-items:center; color:#e2f2f1;
 }
 .bt-row:last-child { border-bottom:none; }
 .bt-header { font-weight:700; font-size:.8rem; color:var(--text-light); text-transform:uppercase; letter-spacing:.05em; }
