@@ -798,51 +798,47 @@
 
     <!-- MEET SECTION -->
     <div class="section-header" style="margin-top:3rem"><h2>Request a Meet</h2></div>
-    <div class="meet-grid">
-      <div class="meet-form-card">
-        <h4>Talk to a Senior</h4>
-        <p>Request a 1:1 session with a DTU/NSUT/IIITD senior who's been through counseling.</p>
-        <div class="meet-form">
-          <input type="text" id="meetName" placeholder="Your name" />
-          <input type="text" id="meetCollege" placeholder="Target college / query topic" />
-          <select id="meetType">
-            <option>Counseling Strategy</option>
-            <option>Branch Selection</option>
-            <option>Campus Life Q&A</option>
-            <option>Document Help</option>
-            <option>General Guidance</option>
-          </select>
-          <button class="btn-primary" onclick="requestMeet()">Request Meet ↗</button>
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:2rem;align-items:start;">
+
+      <!-- LEFT: Info + Notice -->
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;">
+          <div style="font-size:1.5rem;margin-bottom:.75rem">🧑‍💻</div>
+          <h4 style="margin:0 0 .5rem;color:var(--text-main)">1:1 Session</h4>
+          <p style="margin:0;font-size:.875rem">Private session with a senior from DTU/NSUT/IIITD/IGDTUW — personalized guidance on your exact rank & category.</p>
         </div>
-        <div id="meetConfirm" class="doubt-confirm hidden"></div>
+
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;">
+          <div style="font-size:1.5rem;margin-bottom:.75rem">👥</div>
+          <h4 style="margin:0 0 .5rem;color:var(--text-main)">Group Meet</h4>
+          <p style="margin:0;font-size:.875rem">Have a common doubt? Join a group session where mentors answer multiple students at once — open & free.</p>
+        </div>
+
+        <div style="background:rgba(58,175,169,.08);border:1px solid var(--teal-lt);border-radius:var(--radius-lg);padding:1.25rem;display:flex;gap:.75rem;align-items:flex-start;">
+          <span style="font-size:1.25rem">⏱️</span>
+          <div>
+            <strong style="color:var(--teal-lt);font-size:.875rem;display:block;margin-bottom:.25rem">Response within 24 hours</strong>
+            <p style="margin:0;font-size:.8rem;color:var(--text-muted)">After you submit, your request is shared in mentor groups. A senior will reach out on WhatsApp within 24 hours to confirm your session time.</p>
+          </div>
+        </div>
+
       </div>
-      <div class="meet-upcoming">
-        <h4>Upcoming Sessions</h4>
-        <div class="meet-session">
-          <div class="session-date">June 15, 2025</div>
-          <div class="session-info">
-            <strong>JAC Delhi Counseling Q&A</strong>
-            <p>Live session with DTU seniors on Round 1 strategy</p>
-          </div>
-          <span class="session-badge soon">Soon</span>
-        </div>
-        <div class="meet-session">
-          <div class="session-date">June 22, 2025</div>
-          <div class="session-info">
-            <strong>Branch Selection Masterclass</strong>
-            <p>CS vs IT vs ECE — what really matters for placements</p>
-          </div>
-          <span class="session-badge planned">Planned</span>
-        </div>
-        <div class="meet-session">
-          <div class="session-date">July 5, 2025</div>
-          <div class="session-info">
-            <strong>Document Verification Day</strong>
-            <p>Walk-through of every document needed for JAC</p>
-          </div>
-          <span class="session-badge planned">Planned</span>
-        </div>
+
+      <!-- RIGHT: Google Form -->
+      <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSek50luqgE2O1VXOgy4_nb_1_VKEENVkzCLztXDKeqZ437tAQ/viewform?embedded=true"
+          width="100%"
+          height="620"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          style="display:block;background:#fff;">
+          Loading…
+        </iframe>
       </div>
+
     </div>
 
     <!-- ASK A DOUBT -->
