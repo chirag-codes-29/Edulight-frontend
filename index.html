@@ -8,6 +8,429 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 900px;
+    background: #0a0e1a;
+    font-family: 'DM Sans', sans-serif;
+    color: #fff;
+    padding: 0;
+  }
+
+  .wrapper {
+    background: linear-gradient(160deg, #0d1321 0%, #0a0e1a 50%, #0d1321 100%);
+    padding: 44px 50px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* BG decoration */
+  .wrapper::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255,165,0,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,120,255,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #FF6B00, #FF9500);
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 54px;
+    letter-spacing: 2px;
+    line-height: 1;
+    color: #fff;
+  }
+  .title span { color: #FF6B00; }
+  .subtitle {
+    font-size: 13px;
+    color: #8899aa;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .institutes-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 14px 18px;
+    min-width: 220px;
+    text-align: right;
+  }
+  .inst-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #FF6B00;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .inst-chip {
+    display: inline-block;
+    background: rgba(255,107,0,0.12);
+    border: 1px solid rgba(255,107,0,0.3);
+    color: #FFB366;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 6px;
+    margin: 2px 2px;
+  }
+
+  /* ELIGIBILITY BAR */
+  .elig-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .elig-card {
+    flex: 1;
+    background: linear-gradient(135deg, rgba(255,107,0,0.1) 0%, rgba(255,149,0,0.05) 100%);
+    border: 1px solid rgba(255,107,0,0.25);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .elig-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .elig-title {
+    font-size: 10px;
+    color: #FF9500;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .elig-desc {
+    font-size: 12px;
+    color: #ccd6e0;
+    line-height: 1.4;
+  }
+
+  /* DIVIDER */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #4a6080;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(74,96,128,0.5), transparent);
+  }
+
+  /* ROADMAP */
+  .roadmap {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  /* vertical line */
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    left: 12px; top: 10px; bottom: 10px;
+    width: 3px;
+    background: linear-gradient(180deg,
+      #FF6B00 0%,
+      #FF9500 20%,
+      #00C2FF 40%,
+      #00E099 60%,
+      #7B5FFF 80%,
+      #FF3CAC 100%
+    );
+    border-radius: 2px;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .step-dot {
+    position: absolute;
+    left: -22px;
+    top: 14px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid;
+    background: #0a0e1a;
+    flex-shrink: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-dot::after {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .step-card {
+    flex: 1;
+    border-radius: 12px;
+    padding: 13px 16px;
+    border: 1px solid;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.2s;
+  }
+
+  .step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-content { flex: 1; }
+  .step-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    line-height: 1.2;
+  }
+  .step-desc {
+    font-size: 11.5px;
+    color: #8899aa;
+    line-height: 1.45;
+  }
+  .step-tag {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Color variants */
+  .s1 { --c: #FF6B00; }
+  .s2 { --c: #FF9500; }
+  .s3 { --c: #FFD200; }
+  .s4 { --c: #00C2FF; }
+  .s5 { --c: #00E099; }
+  .s6 { --c: #7B5FFF; }
+  .s7 { --c: #FF3CAC; }
+  .s8 { --c: #00C2FF; }
+
+  .step .step-dot { color: var(--c); border-color: var(--c); }
+  .step .step-card {
+    background: color-mix(in srgb, var(--c) 6%, transparent);
+    border-color: color-mix(in srgb, var(--c) 20%, transparent);
+  }
+  .step .step-num {
+    background: color-mix(in srgb, var(--c) 15%, transparent);
+    color: var(--c);
+  }
+  .step .step-title { color: color-mix(in srgb, var(--c) 80%, #fff); }
+  .step .step-tag {
+    background: color-mix(in srgb, var(--c) 15%, transparent);
+    color: var(--c);
+    border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+  }
+
+  /* ALLOTMENT SECTION */
+  .allotment-block {
+    background: rgba(0,194,255,0.06);
+    border: 1px solid rgba(0,194,255,0.2);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+  }
+  .allot-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .allot-icon { font-size: 20px; }
+  .allot-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #00C2FF;
+  }
+  .allot-sub {
+    font-size: 11px;
+    color: #5a7a90;
+    margin-top: 1px;
+  }
+  .rounds-grid {
+    display: flex;
+    gap: 8px;
+  }
+  .round-card {
+    flex: 1;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(0,194,255,0.15);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .round-icon { font-size: 18px; margin-bottom: 4px; }
+  .round-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #00C2FF;
+    margin-bottom: 3px;
+  }
+  .round-desc {
+    font-size: 10px;
+    color: #6a8a9a;
+    line-height: 1.35;
+  }
+
+  /* SPECIAL ROUND */
+  .special-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .special-card {
+    flex: 1;
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid;
+    text-align: center;
+  }
+  .special-card.upgrade {
+    background: rgba(123,95,255,0.08);
+    border-color: rgba(123,95,255,0.25);
+  }
+  .special-card.spot {
+    background: rgba(255,60,172,0.08);
+    border-color: rgba(255,60,172,0.25);
+  }
+  .special-card .s-icon { font-size: 22px; margin-bottom: 5px; }
+  .special-card .s-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .upgrade .s-title { color: #9B7FFF; }
+  .spot .s-title { color: #FF6CAC; }
+  .special-card .s-desc { font-size: 11px; color: #6a8090; line-height: 1.35; }
+
+  /* DOCS SECTION */
+  .docs-section {
+    background: rgba(0,224,153,0.05);
+    border: 1px solid rgba(0,224,153,0.18);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+  .docs-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #00E099;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .docs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .doc-chip {
+    background: rgba(0,224,153,0.1);
+    border: 1px solid rgba(0,224,153,0.2);
+    color: #80F0C0;
+    font-size: 10.5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  /* KEY TIPS */
+  .tips-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .tip-card {
+    flex: 1;
+    background: rgba(255,210,0,0.06);
+    border: 1px solid rgba(255,210,0,0.18);
+    border-radius: 10px;
+    padding: 10px 13px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .tip-text { font-size: 11px; color: #aabbc0; line-height: 1.4; }
+  .tip-text strong { color: #FFD200; font-weight: 700; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 10px;
+    color: #3a5060;
+    letter-spacing: 1px;
+  }
+  .footer span { color: #FF6B00; }
+  </style>
 </head>
 <body>
 
@@ -584,9 +1007,229 @@
           
           <a href="https://www.igdtuw.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
         </div>
+        <div class="section-header" style="margin-top:3rem"><h2>JAC Counseling Roadmap</h2></div>
       </div>
 
     </div>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="badge">B.TECH ADMISSION 2026</div>
+      <div class="title">JAC <span>DELHI</span><br>COUNSELING</div>
+      <div class="subtitle">Joint Admission Committee · jacdelhi.admissions.nic.in</div>
+    </div>
+    <div class="institutes-box">
+      <div class="inst-label">Participating Institutes</div>
+      <div>
+        <span class="inst-chip">DTU</span>
+        <span class="inst-chip">NSUT</span>
+        <span class="inst-chip">IGDTUW</span>
+        <span class="inst-chip">IIIT-D</span>
+        <span class="inst-chip">DSEU</span>
+      </div>
+      <div style="margin-top:8px; font-size:10px; color:#5a7090;">Based on JEE Main 2026 Rank</div>
+    </div>
+  </div>
+
+  <!-- ELIGIBILITY -->
+  <div class="elig-bar">
+    <div class="elig-card">
+      <div class="elig-icon">🎯</div>
+      <div>
+        <div class="elig-title">Exam</div>
+        <div class="elig-desc">JEE Main 2026 qualified (valid score)</div>
+      </div>
+    </div>
+    <div class="elig-card">
+      <div class="elig-icon">📊</div>
+      <div>
+        <div class="elig-title">Class 12 Marks</div>
+        <div class="elig-desc">60% in PCM · 55% OBC/CW · 50% SC/ST/PwD</div>
+      </div>
+    </div>
+    <div class="elig-card">
+      <div class="elig-icon">🌐</div>
+      <div>
+        <div class="elig-title">Domicile</div>
+        <div class="elig-desc">Delhi & Outside Delhi both eligible · separate seat pools</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="section-label">Step-by-Step Process</div>
+
+  <div class="roadmap">
+
+    <!-- Step 1 -->
+    <div class="step s1">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <div class="step-title">Register Online</div>
+          <div class="step-desc">Visit the official JAC Delhi portal · sign up with JEE Main roll no. · pay non-refundable registration fee</div>
+          <span class="step-tag">₹1,500 Fee · One-time</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step s2">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <div class="step-title">Fill College & Branch Choices</div>
+          <div class="step-desc">Add as many institute-branch preferences as possible in order of priority — more choices = better chance</div>
+          <span class="step-tag">More Choices = Better Chances</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step s3">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <div class="step-title">Special Category Verification</div>
+          <div class="step-desc">Defence (CW) · Kashmiri Migrants (KM) · IIIT-D Bonus Points — report physically at DTU for document verification</div>
+          <span class="step-tag">Only if claiming these categories</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 — Allotment Rounds -->
+    <div class="step s4">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <div class="step-title">Seat Allotment — Multiple Rounds</div>
+          <div class="step-desc">JAC runs several allotment rounds. Each round: result declared → pay Seat Acceptance Fee → report physically for document verification at allotted institute</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ALLOTMENT ROUNDS DETAIL -->
+  <div class="allotment-block">
+    <div class="allot-header">
+      <div class="allot-icon">🔄</div>
+      <div>
+        <div class="allot-title">What Happens Each Round</div>
+        <div class="allot-sub">Same cycle repeats — new vacancies fill up in each pass</div>
+      </div>
+    </div>
+    <div class="rounds-grid">
+      <div class="round-card">
+        <div class="round-icon">📋</div>
+        <div class="round-name">Allotment</div>
+        <div class="round-desc">Seat assigned based on rank, category & choices</div>
+      </div>
+      <div class="round-card">
+        <div class="round-icon">💳</div>
+        <div class="round-name">Accept Seat</div>
+        <div class="round-desc">Pay Seat Acceptance Fee online to confirm</div>
+      </div>
+      <div class="round-card">
+        <div class="round-icon">🏛️</div>
+        <div class="round-name">Report Physically</div>
+        <div class="round-desc">Visit allotted institute with original documents</div>
+      </div>
+      <div class="round-card">
+        <div class="round-icon">🔒</div>
+        <div class="round-name">Freeze or Wait</div>
+        <div class="round-desc">Freeze seat OR stay in pool for better upgrade next round</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADE + SPOT -->
+  <div class="special-row">
+    <div class="special-card upgrade">
+      <div class="s-icon">⬆️</div>
+      <div class="s-title">Upgradation Round</div>
+      <div class="s-desc">After all main rounds · admitted candidates auto-considered for a better branch/institute as per choices · can freeze to stop upgrades</div>
+    </div>
+    <div class="special-card spot">
+      <div class="s-icon">🎯</div>
+      <div class="s-title">Spot Round</div>
+      <div class="s-desc">Conducted only if seats remain vacant · offline at DTU · last chance for fresh admissions · very limited seats</div>
+    </div>
+  </div>
+
+  <!-- ROADMAP CONTINUED -->
+  <div class="roadmap" style="margin-top:0">
+
+    <div class="step s5">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <div class="step-title">Freeze / Upgrade / Withdraw</div>
+          <div class="step-desc"><strong style="color:#00E099">Freeze</strong> — lock current seat, no more upgrades &nbsp;·&nbsp; <strong style="color:#00E099">Upgrade</strong> — stay in pool for better allotment &nbsp;·&nbsp; <strong style="color:#00E099">Withdraw</strong> — exit counseling (seat acceptance fee refund policy applies)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step s7">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-num">06</div>
+        <div class="step-content">
+          <div class="step-title">Final Admission</div>
+          <div class="step-desc">Complete institute-level formalities · fee payment · submit original documents · get admission confirmation letter</div>
+          <span class="step-tag">🎓 You're in!</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DOCUMENTS -->
+  <div class="docs-section">
+    <div class="docs-title">📁 Documents Required at Reporting</div>
+    <div class="docs-grid">
+      <span class="doc-chip">JEE Main Admit Card</span>
+      <span class="doc-chip">JEE Main Rank Card</span>
+      <span class="doc-chip">Class 10 Marksheet</span>
+      <span class="doc-chip">Class 12 Marksheet</span>
+      <span class="doc-chip">Category Certificate</span>
+      <span class="doc-chip">Delhi Domicile (if applicable)</span>
+      <span class="doc-chip">Passport Photo</span>
+      <span class="doc-chip">Aadhar Card</span>
+      <span class="doc-chip">JAC Registration Printout</span>
+      <span class="doc-chip">CW / KM Cert (if applicable)</span>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-row">
+    <div class="tip-card">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text"><strong>Fill MAX choices</strong> — once window closes, no editing allowed in later rounds</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">⚡</div>
+      <div class="tip-text"><strong>Don't miss reporting</strong> — missing physical verification = seat cancellation</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🔁</div>
+      <div class="tip-text"><strong>Already verified?</strong> No need to report again in subsequent rounds</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>JAC DELHI 2026</span> · B.TECH ONLY · DTU | NSUT | IGDTUW | IIIT-D | DSEU · jacdelhi.admissions.nic.in
+  </div>
+
+</div>
 
     <!-- SEAT MATRIX -->
     <div class="section-header" style="margin-top:3rem"><h2>seat matrix 2026</h2></div>
@@ -811,10 +1454,7 @@
             <div class="rl-icon">🏛️</div>
             <div><strong>JAC Delhi Official</strong><p>Registration, choice filling, seat allotment</p></div>
           </a>
-          <a href="https://jeemain.nta.ac.in" target="_blank" class="res-link-card">
-            <div class="rl-icon">📋</div>
-            <div><strong>JEE Main NTA Portal</strong><p>Results, scorecard download, official rank</p></div>
-          </a>
+          
           <a href="https://dtu.ac.in" target="_blank" class="res-link-card">
             <div class="rl-icon">🏫</div>
             <div><strong>DTU Delhi</strong><p>Official university portal</p></div>
@@ -837,26 +1477,9 @@
       <div class="res-category">
         <h3>📥 Downloads & Guides</h3>
         <div class="download-list">
-          <div class="dl-item">
-            <div class="dl-info"><div class="dl-icon">📄</div><div><strong>Document Checklist PDF</strong><p>Complete list of documents required for JAC Delhi</p></div></div>
-            <button class="btn-primary sm" onclick="fakeDownload('Document_Checklist.pdf')">↓ Download</button>
-          </div>
-          <div class="dl-item">
-            <div class="dl-info"><div class="dl-icon">📊</div><div><strong>Cutoff Data 2022–24</strong><p>Historical cutoff ranks for all major branches</p></div></div>
-            <button class="btn-primary sm" onclick="fakeDownload('Cutoff_Data_2022_24.xlsx')">↓ Download</button>
-          </div>
-          <div class="dl-item">
-            <div class="dl-info"><div class="dl-icon">🗺️</div><div><strong>Counseling Roadmap</strong><p>Step-by-step JAC Delhi counseling guide</p></div></div>
-            <button class="btn-primary sm" onclick="fakeDownload('Counseling_Roadmap.pdf')">↓ Download</button>
-          </div>
-          <div class="dl-item">
-            <div class="dl-info"><div class="dl-icon">📋</div><div><strong>Preference List Template</strong><p>Excel template to plan your preference order</p></div></div>
-            <button class="btn-primary sm" onclick="fakeDownload('Preference_Template.xlsx')">↓ Download</button>
-          </div>
-          <div class="dl-item">
-            <div class="dl-info"><div class="dl-icon">💼</div><div><strong>Branch Comparison Sheet</strong><p>CS vs IT vs ECE — full comparison for JAC colleges</p></div></div>
-            <button class="btn-primary sm" onclick="fakeDownload('Branch_Comparison.pdf')">↓ Download</button>
-          </div>
+          
+          
+          
         </div>
       </div>
 
