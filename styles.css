@@ -16,8 +16,8 @@
   --text-main:   #17252A;
   --text-muted:  #5a7a82;
   --text-light:  #8fadb5;
-  --bg-light:    #f5fbfb;
-  --bg-card:     #FFFFFF;
+  --bg-light:    #111827;
+  --bg-card:     #0f1623;
   --border:      #d0e8e8;
 
   --shadow-sm:  0 2px 8px rgba(23,37,42,.08);
@@ -496,7 +496,7 @@ p  { color: var(--text-muted); }
 }
 .pref-drop-zone.drag-over { border-color:var(--teal-lt); background:rgba(58,175,169,.04); }
 .pref-empty-msg { color:var(--text-light); font-size:.875rem; text-align:center; margin:auto; }
-.pref-drop-zone .pref-item { background:#fff; display:flex; justify-content:space-between; align-items:center; }
+.pref-drop-zone .pref-item { background:#111827; display:flex; justify-content:space-between; align-items:center; }
 .pref-remove { color:var(--text-light); cursor:pointer; font-size:1rem; }
 .pref-remove:hover { color:#ef4444; }
 
