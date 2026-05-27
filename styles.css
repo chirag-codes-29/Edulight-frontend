@@ -155,8 +155,9 @@ p  { color: var(--text-muted); }
 
 /* ─── SECTION WRAPPER ─── */
 .section {
-  max-width:1200px; margin:0 auto;
-  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 4rem;
 }
 .section.alt-bg { background: var(--navy); border-radius: var(--radius-xl); margin:2rem auto; }
 .section.alt-bg h2, .section.alt-bg h3 { color:var(--white); }
