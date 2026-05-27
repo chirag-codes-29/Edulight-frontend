@@ -13,12 +13,12 @@
   --grey:    #DEF2F1;
   --white:   #FFFFFF;
 
-  --text-main:   #17252A;
-  --text-muted:  #5a7a82;
-  --text-light:  #8fadb5;
+  --text-main:   #e2f2f1;
+  --text-muted:  #8fadb5;
+  --text-light:  #5a7a82;
   --bg-light:    #111827;
   --bg-card:     #0f1623;
-  --border:      #d0e8e8;
+  --border:      #1e3040;
 
   --shadow-sm:  0 2px 8px rgba(23,37,42,.08);
   --shadow-md:  0 8px 32px rgba(23,37,42,.12);
