@@ -880,4 +880,4 @@ function copyPreferenceList() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', renderPreferences);
+
