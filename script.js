@@ -279,13 +279,6 @@ function updateDocProgress() {
   if (overallFill) overallFill.style.width = pct + '%';
 }
 
-// Attach listeners to checklist
-document.querySelectorAll('#docChecklist input[type=checkbox]').forEach(cb => {
-  cb.addEventListener('change', () => {
-    updateDocProgress();
-    saveChecklist();
-  });
-});
 
 /* ═══════════════════════════════════════════════ PREFERENCE LIST BUILDER ═══ */
 
@@ -634,26 +627,32 @@ function saveTodos() {
 }
 
 function loadTodos() {
-  const saved = JSON.parse(localStorage.getItem('edulight_todos') || '[]');
-  if (!saved.length) return;
-  const list = document.getElementById('todoList');
-  if (!list) return;
-  list.querySelector('.todo-empty')?.remove();
-  saved.forEach(({ text, done }) => {
-    const id = ++taskIdCounter;
-    const li = document.createElement('li');
-    li.className = 'todo-item';
-    li.dataset.id = id;
-    li.innerHTML = `
-      <input type="checkbox" id="task-${id}" ${done ? 'checked' : ''} onchange="updateTaskCount(); saveTodos();" />
-      <span>${escapeHtml(text)}</span>
-      <button class="todo-del" onclick="removeTask(${id})" title="Delete">✕</button>
-    `;
-    list.appendChild(li);
-  });
-  updateTaskCount();
+  try {
+    const raw = localStorage.getItem('edulight_todos');
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    if (!Array.isArray(saved) || !saved.length) return;
+    const list = document.getElementById('todoList');
+    if (!list) return;
+    list.querySelector('.todo-empty')?.remove();
+    saved.forEach(({ text, done }) => {
+      if (!text) return;
+      const id = ++taskIdCounter;
+      const li = document.createElement('li');
+      li.className = 'todo-item';
+      li.dataset.id = id;
+      li.innerHTML = `
+        <input type="checkbox" id="task-${id}" ${done ? 'checked' : ''} onchange="updateTaskCount(); saveTodos();" />
+        <span>${escapeHtml(text)}</span>
+        <button class="todo-del" onclick="removeTask(${id})" title="Delete">✕</button>
+      `;
+      list.appendChild(li);
+    });
+    updateTaskCount();
+  } catch(e) {
+    console.warn('loadTodos failed:', e);
+  }
 }
-
 /* ═══════════════════════════════════════════════ NOTES ═══ */
 
 /**
@@ -726,6 +725,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initDragDrop();
   loadNote();
   loadChecklist();
+  // Attach checklist listeners AFTER loading saved state
+document.querySelectorAll('#docChecklist input[type=checkbox]').forEach(cb => {
+  cb.addEventListener('change', () => { updateDocProgress(); saveChecklist(); });
+});
   loadPrefList();
   loadTodos();
   animateStats();
@@ -765,3 +768,8 @@ function togglePrefItems() {
   const expanded = items.classList.toggle('expanded');
   btn.textContent = expanded ? '▲ Show less' : '▼ Show all branches';
 }
+/* ─── Save state before page unloads ─── */
+window.addEventListener('beforeunload', () => {
+  saveTodos();
+  saveChecklist();
+});
