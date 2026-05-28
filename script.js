@@ -686,7 +686,7 @@ document.querySelectorAll('a[href="#"]').forEach(a => {
 });
 /* ─── PREFERENCE BUILDER TOGGLE ─── */
 function togglePrefItems() {
-  const items = document.getElementById('prefAvailable');
+  const items = document.querySelector('.pref-items');
   const btn = document.getElementById('prefExpandBtn');
   const expanded = items.classList.toggle('expanded');
   btn.textContent = expanded ? '▲ Show less' : '▼ Show all branches';
