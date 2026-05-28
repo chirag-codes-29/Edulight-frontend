@@ -473,7 +473,8 @@ p  { color: var(--text-muted); }
   color:var(--teal-dk);
   padding:.2rem .6rem; border-radius:50px;
 }
-.pref-items { display:flex; flex-direction:column; gap:.5rem; }
+.pref-items { display:flex; flex-direction:column; gap:.5rem; max-height:220px; overflow:hidden; transition:max-height .4s ease; }
+.pref-items.expanded { max-height:3000px; }
 .pref-item {
   padding:.75rem 1rem;
   background:var(--bg-light);

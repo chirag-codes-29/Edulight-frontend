@@ -568,7 +568,7 @@
         <span id="prefBuilderArrow" style="font-size:1rem;color:var(--teal-lt);transition:transform .3s;">▼ Open</span>
       </h2>
     </div>
-    <div class="pref-builder" id="prefBuilderSection" style="display:none;">
+    <div class="pref-builder" id="prefBuilderSection">
       <div class="pref-available">
         <h4>Available Options <span class="tag">Drag to add</span></h4>
         <div class="pref-college-filter">
@@ -634,6 +634,7 @@
           <div class="pref-item draggable" draggable="true" data-id="54" data-college="igdtuw">IGDTUW — RAIE</div>
           <div class="pref-item draggable" draggable="true" data-id="55" data-college="igdtuw">IGDTUW — MAE</div>
         </div>
+        <button id="prefExpandBtn" onclick="togglePrefItems()" style="margin-top:.75rem;width:100%;padding:.6rem;background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--teal-lt);cursor:pointer;font-size:.8rem;">▼ Show all branches</button>
       </div>
       <div class="pref-list">
         <h4>Your Preference List <span class="tag" id="prefCount">0 added</span></h4>
