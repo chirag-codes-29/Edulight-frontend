@@ -438,6 +438,25 @@ function clearPrefList() {
   updatePrefCount();
   showToast('🗑️ List cleared');
 }
+
+function buildPrefText() {
+  const items = document.querySelectorAll('#prefList .pref-item');
+  if (!items.length) return null;
+  const lines = [...items].map((el, i) => `${i + 1}. ${el.querySelector('span').textContent.trim()}`).join('\n');
+  return `📋 My JAC Delhi 2026 Preference List:\n\n${lines}\n\n🔗 Build yours: chirag-codes-29.github.io/Edulight-frontend`;
+}
+
+function sharePrefBuilderWhatsApp() {
+  const text = buildPrefText();
+  if (!text) { showToast('⚠️ Add at least one preference first!'); return; }
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function copyPrefBuilder() {
+  const text = buildPrefText();
+  if (!text) { showToast('⚠️ Add at least one preference first!'); return; }
+  navigator.clipboard.writeText(text).then(() => showToast('✅ Copied to clipboard!'));
+}
 /* ─── LOCALSTORAGE: PREF LIST ─── */
 function savePrefList() {
   const items = [];

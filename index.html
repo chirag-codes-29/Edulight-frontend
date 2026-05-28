@@ -641,7 +641,11 @@
         <div class="pref-drop-zone" id="prefList">
           <p class="pref-empty-msg">Drag options here to build your list</p>
         </div>
-        <button class="btn-secondary" onclick="clearPrefList()" style="margin-top:1rem">Clear List</button>
+        <div style="display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap;">
+          <button class="btn-secondary" onclick="clearPrefList()">🗑️ Clear List</button>
+          <button class="btn-secondary" onclick="sharePrefBuilderWhatsApp()">📲 WhatsApp</button>
+          <button class="btn-secondary" onclick="copyPrefBuilder()">📋 Copy</button>
+        </div>
       </div>
     </div>
 
