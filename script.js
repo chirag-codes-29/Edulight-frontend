@@ -456,9 +456,11 @@ function sharePrefBuilderWhatsApp() {
 }
 
 function copyPrefLink() {
-  const link = buildShareLink();
-  if (!link) { showToast('⚠️ Add at least one preference first!'); return; }
-  navigator.clipboard.writeText(link).then(() => showToast('🔗 Link copied!'));
+  const items = document.querySelectorAll('#prefList .pref-item');
+  if (!items.length) { showToast('⚠️ Add at least one preference first!'); return; }
+  const lines = [...items].map((el, i) => `${i+1}. ${el.querySelector('span').textContent.trim()}`).join('\n');
+  const text = `📋 My JAC Delhi 2026 Preference List:\n\n${lines}\n\n🔗 Make your preference list: chirag-codes-29.github.io/Edulight-frontend`;
+  navigator.clipboard.writeText(text).then(() => showToast('📋 Copied!'));
 }
 /* ─── LOCALSTORAGE: PREF LIST ─── */
 function savePrefList() {
