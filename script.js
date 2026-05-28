@@ -234,6 +234,21 @@ function toggleFaq(el) {
 /* ═══════════════════════════════════════════════ DOCUMENT CHECKLIST ═══ */
 
 // Update document checklist progress bar
+/* ─── LOCALSTORAGE: CHECKLIST ─── */
+function saveChecklist() {
+  const checks = {};
+  document.querySelectorAll('.doc-check').forEach(cb => {
+    checks[cb.dataset.id] = cb.checked;
+  });
+  localStorage.setItem('edulight_checklist', JSON.stringify(checks));
+}
+function loadChecklist() {
+  const saved = JSON.parse(localStorage.getItem('edulight_checklist') || '{}');
+  document.querySelectorAll('.doc-check').forEach(cb => {
+    if (saved[cb.dataset.id]) cb.checked = true;
+  });
+  updateDocProgress();
+}
 function updateDocProgress() {
   // Sirf mandatory checkboxes count honge progress mein
   const mandatoryIds = ['cb-fee','cb-regform','cb-choices','cb-photos','cb-jee','cb-class12','cb-allotment','cb-class10','cb-medical'];
@@ -267,6 +282,7 @@ function updateDocProgress() {
 // Attach listeners to checklist
 document.querySelectorAll('#docChecklist input[type=checkbox]').forEach(cb => {
   cb.addEventListener('change', updateDocProgress);
+  saveChecklist();
 });
 
 /* ═══════════════════════════════════════════════ PREFERENCE LIST BUILDER ═══ */
@@ -293,6 +309,7 @@ function initDragDrop() {
     dropZone.appendChild(clone);
     bindListItem(clone);
     updatePrefCount();
+    savePrefList();
     showToast('✓ Added to your list!');
     // Hide from available list
     const original = document.querySelector(`#prefAvailable .pref-item[data-id="${id}"]`);
@@ -362,6 +379,7 @@ function initDragDrop() {
       dropZone.insertBefore(draggingEl, next || null);
       dropZone.querySelectorAll('.drag-over-item').forEach(i => i.classList.remove('drag-over-item'));
       updatePrefCount();
+      savePrefList();
       return;
     }
 
@@ -401,6 +419,7 @@ function removePrefItem(btn) {
     dropZone.innerHTML = '<p class="pref-empty-msg">Drag options here to build your list</p>';
   }
   updatePrefCount();
+  savePrefList();
 }
 
 /**
@@ -420,8 +439,32 @@ function clearPrefList() {
   const dropZone = document.getElementById('prefList');
   if (!dropZone) return;
   dropZone.innerHTML = '<p class="pref-empty-msg">Drag options here to build your list</p>';
+  localStorage.removeItem('edulight_preflist');
   updatePrefCount();
   showToast('🗑️ List cleared');
+}
+/* ─── LOCALSTORAGE: PREF LIST ─── */
+function savePrefList() {
+  const items = [];
+  document.querySelectorAll('#prefList .pref-item').forEach(item => {
+    items.push({ id: item.dataset.id, text: item.childNodes[0].textContent.trim() });
+  });
+  localStorage.setItem('edulight_preflist', JSON.stringify(items));
+}
+function loadPrefList() {
+  const saved = JSON.parse(localStorage.getItem('edulight_preflist') || '[]');
+  if (!saved.length) return;
+  const dropZone = document.getElementById('prefList');
+  dropZone.querySelector('.pref-empty-msg')?.remove();
+  saved.forEach(({ id, text }) => {
+    const div = document.createElement('div');
+    div.className = 'pref-item';
+    div.dataset.id = id;
+    div.innerHTML = `${text} <button class="pref-remove" onclick="removePrefItem(this)">✕</button>`;
+    dropZone.appendChild(div);
+    document.querySelector(`#prefAvailable .pref-item[data-id="${id}"]`)?.style.setProperty('display','none');
+  });
+  document.getElementById('prefCount').textContent = `${saved.length} added`;
 }
 
 /* ═══════════════════════════════════════════════ COMMUNITY FORMS ═══ */
@@ -691,3 +734,8 @@ function togglePrefItems() {
   const expanded = items.classList.toggle('expanded');
   btn.textContent = expanded ? '▲ Show less' : '▼ Show all branches';
 }
+/* ─── LOAD SAVED DATA ON PAGE READY ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  loadChecklist();
+  loadPrefList();
+});
