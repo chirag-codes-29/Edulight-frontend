@@ -439,23 +439,26 @@ function clearPrefList() {
   showToast('🗑️ List cleared');
 }
 
-function buildPrefText() {
+function buildShareLink() {
   const items = document.querySelectorAll('#prefList .pref-item');
   if (!items.length) return null;
-  const lines = [...items].map((el, i) => `${i + 1}. ${el.querySelector('span').textContent.trim()}`).join('\n');
-  return `📋 My JAC Delhi 2026 Preference List:\n\n${lines}\n\n🔗 Build yours: chirag-codes-29.github.io/Edulight-frontend`;
+  const ids = [...items].map(el => el.dataset.id).join(',');
+  return `${location.origin}${location.pathname}?prefs=${ids}`;
 }
 
 function sharePrefBuilderWhatsApp() {
-  const text = buildPrefText();
-  if (!text) { showToast('⚠️ Add at least one preference first!'); return; }
+  const link = buildShareLink();
+  if (!link) { showToast('⚠️ Add at least one preference first!'); return; }
+  const items = document.querySelectorAll('#prefList .pref-item');
+  const lines = [...items].map((el, i) => `${i+1}. ${el.querySelector('span').textContent.trim()}`).join('\n');
+  const text = `📋 My JAC Delhi 2026 Preference List:\n\n${lines}\n\n🔗 See my full list: ${link}`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
 }
 
-function copyPrefBuilder() {
-  const text = buildPrefText();
-  if (!text) { showToast('⚠️ Add at least one preference first!'); return; }
-  navigator.clipboard.writeText(text).then(() => showToast('✅ Copied to clipboard!'));
+function copyPrefLink() {
+  const link = buildShareLink();
+  if (!link) { showToast('⚠️ Add at least one preference first!'); return; }
+  navigator.clipboard.writeText(link).then(() => showToast('🔗 Link copied!'));
 }
 /* ─── LOCALSTORAGE: PREF LIST ─── */
 function savePrefList() {
@@ -749,6 +752,31 @@ document.querySelectorAll('#docChecklist input[type=checkbox]').forEach(cb => {
   cb.addEventListener('change', () => { updateDocProgress(); saveChecklist(); });
 });
   loadPrefList();
+
+  const sharedPrefs = new URLSearchParams(location.search).get('prefs');
+  if (sharedPrefs) {
+    showPage('admission');
+    setTimeout(() => {
+      const ids = sharedPrefs.split(',');
+      const dropZone = document.getElementById('prefList');
+      if (!dropZone) return;
+      dropZone.querySelector('.pref-empty-msg')?.remove();
+      ids.forEach(id => {
+        if (dropZone.querySelector(`.pref-item[data-id="${id}"]`)) return;
+        const src = document.querySelector(`#prefAvailable .pref-item[data-id="${id}"]`);
+        if (!src) return;
+        const div = document.createElement('div');
+        div.className = 'pref-item';
+        div.dataset.id = id;
+        div.innerHTML = `<span>${src.textContent.trim()}</span><span class="pref-remove" onclick="removePrefItem(this)">✕</span>`;
+        dropZone.appendChild(div);
+        src.style.display = 'none';
+      });
+      updatePrefCount();
+      savePrefList();
+      showToast('📋 Shared preference list loaded!');
+    }, 400);
+  }
   loadTodos();
   animateStats();
 
