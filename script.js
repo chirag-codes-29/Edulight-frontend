@@ -281,8 +281,10 @@ function updateDocProgress() {
 
 // Attach listeners to checklist
 document.querySelectorAll('#docChecklist input[type=checkbox]').forEach(cb => {
-  cb.addEventListener('change', updateDocProgress);
-  saveChecklist();
+  cb.addEventListener('change', () => {
+    updateDocProgress();
+    saveChecklist();
+  });
 });
 
 /* ═══════════════════════════════════════════════ PREFERENCE LIST BUILDER ═══ */
@@ -686,25 +688,19 @@ function escapeHtml(str) {
  * Initialize everything on DOM load
  */
 document.addEventListener('DOMContentLoaded', () => {
-  // Start on home page
   showPage('home');
-
-  // Init drag-drop for preference builder
   initDragDrop();
-
-  // Load saved notes
   loadNote();
-
-  // Animate stat numbers
+  loadChecklist();
+  loadPrefList();
   animateStats();
 
-  // Keyboard shortcut: Enter on predictor inputs
   document.getElementById('predRank')?.addEventListener('keydown', e => {
     if (e.key === 'Enter') runPredictor();
   });
   document.getElementById('heroRankInput')?.addEventListener('keydown', e => {
-  if (e.key === 'Enter') quickPredict();
-});
+    if (e.key === 'Enter') quickPredict();
+  });
 });
 
 /**
@@ -734,8 +730,3 @@ function togglePrefItems() {
   const expanded = items.classList.toggle('expanded');
   btn.textContent = expanded ? '▲ Show less' : '▼ Show all branches';
 }
-/* ─── LOAD SAVED DATA ON PAGE READY ─── */
-document.addEventListener('DOMContentLoaded', () => {
-  loadChecklist();
-  loadPrefList();
-});
