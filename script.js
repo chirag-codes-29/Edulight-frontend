@@ -462,26 +462,36 @@ function copyPrefLink() {
 }
 /* ─── LOCALSTORAGE: PREF LIST ─── */
 function savePrefList() {
-  const items = [];
-  document.querySelectorAll('#prefList .pref-item').forEach(item => {
-    items.push({ id: item.dataset.id, text: item.childNodes[0].textContent.trim() });
-  });
-  localStorage.setItem('edulight_preflist', JSON.stringify(items));
+  try {
+    const items = [];
+    document.querySelectorAll('#prefList .pref-item').forEach(item => {
+      const span = item.querySelector('span:first-child');
+      const text = span ? span.textContent.trim() : item.childNodes[0]?.textContent?.trim();
+      if (item.dataset.id && text) items.push({ id: item.dataset.id, text });
+    });
+    localStorage.setItem('edulight_preflist', JSON.stringify(items));
+  } catch(e) { console.warn('savePrefList failed:', e); }
 }
+
 function loadPrefList() {
-  const saved = JSON.parse(localStorage.getItem('edulight_preflist') || '[]');
-  if (!saved.length) return;
-  const dropZone = document.getElementById('prefList');
-  dropZone.querySelector('.pref-empty-msg')?.remove();
-  saved.forEach(({ id, text }) => {
-    const div = document.createElement('div');
-    div.className = 'pref-item';
-    div.dataset.id = id;
-    div.innerHTML = `${text} <button class="pref-remove" onclick="removePrefItem(this)">✕</button>`;
-    dropZone.appendChild(div);
-    document.querySelector(`#prefAvailable .pref-item[data-id="${id}"]`)?.style.setProperty('display','none');
-  });
-  document.getElementById('prefCount').textContent = `${saved.length} added`;
+  try {
+    const saved = JSON.parse(localStorage.getItem('edulight_preflist') || '[]');
+    if (!saved.length) return;
+    const dropZone = document.getElementById('prefList');
+    if (!dropZone) return;
+    dropZone.querySelector('.pref-empty-msg')?.remove();
+    saved.forEach(({ id, text }) => {
+      if (!id || !text) return;
+      if (dropZone.querySelector(`.pref-item[data-id="${id}"]`)) return;
+      const div = document.createElement('div');
+      div.className = 'pref-item';
+      div.dataset.id = id;
+      div.innerHTML = `<span>${text}</span><span class="pref-remove" onclick="removePrefItem(this)">✕</span>`;
+      dropZone.appendChild(div);
+      document.querySelector(`#prefAvailable .pref-item[data-id="${id}"]`)?.style.setProperty('display','none');
+    });
+    updatePrefCount();
+  } catch(e) { console.warn('loadPrefList failed:', e); }
 }
 
 /* ═══════════════════════════════════════════════ COMMUNITY FORMS ═══ */
@@ -821,63 +831,6 @@ window.addEventListener('beforeunload', () => {
   saveChecklist();
 });
 
-// ─── PREFERENCE LIST ───
-let preferences = JSON.parse(localStorage.getItem('prefList') || '[]');
 
-function renderPreferences() {
-  const list = document.getElementById('prefList');
-  if (!list) return;
-  if (preferences.length === 0) {
-    list.innerHTML = '<li class="pref-empty">No preferences added yet.</li>';
-    return;
-  }
-  list.innerHTML = preferences.map((p, i) => `
-    <li class="pref-item">
-      <span class="pref-num">${i + 1}</span>
-      <span class="pref-text">${p.college} — ${p.branch}</span>
-      <button class="pref-remove" onclick="removePreference(${i})">✕</button>
-    </li>
-  `).join('');
-}
-
-function addPreference() {
-  const college = document.getElementById('prefCollege').value.trim();
-  const branch = document.getElementById('prefBranch').value.trim();
-  if (!college || !branch) return;
-  preferences.push({ college, branch });
-  localStorage.setItem('prefList', JSON.stringify(preferences));
-  document.getElementById('prefCollege').value = '';
-  document.getElementById('prefBranch').value = '';
-  renderPreferences();
-}
-
-function removePreference(index) {
-  preferences.splice(index, 1);
-  localStorage.setItem('prefList', JSON.stringify(preferences));
-  renderPreferences();
-}
-
-function buildShareText() {
-  if (preferences.length === 0) return null;
-  const lines = preferences.map((p, i) => `${i + 1}. ${p.college} — ${p.branch}`).join('\n');
-  return `📋 My JAC Delhi 2026 Preference List:\n\n${lines}\n\n🔗 Build yours at: chirag-codes-29.github.io/Edulight-frontend`;
-}
-
-function sharePreferenceWhatsApp() {
-  const text = buildShareText();
-  if (!text) { alert('Add at least one preference first!'); return; }
-  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-}
-
-function copyPreferenceList() {
-  const text = buildShareText();
-  if (!text) { alert('Add at least one preference first!'); return; }
-  navigator.clipboard.writeText(text).then(() => {
-    const el = document.getElementById('prefCopied');
-    el.textContent = '✅ Copied to clipboard!';
-    el.classList.remove('hidden');
-    setTimeout(() => el.classList.add('hidden'), 3000);
-  });
-}
 
 
