@@ -1415,6 +1415,27 @@
         <div id="noteSaved" class="doubt-confirm hidden" style="margin-top:.75rem"></div>
       </div>
 
+      <!-- PREFERENCE LIST -->
+      <div class="dash-card full-width-card">
+        <div class="dash-card-header">
+          <h3>🎯 My Preference List</h3>
+          <div style="display:flex;gap:.5rem;">
+            <button class="btn-secondary sm" onclick="sharePreferenceWhatsApp()">📲 WhatsApp</button>
+            <button class="btn-secondary sm" onclick="copyPreferenceList()">📋 Copy</button>
+          </div>
+        </div>
+        <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:1rem">Add your JAC Delhi college-branch choices in order of priority. Share with seniors for feedback.</p>
+        <div class="pref-input-row">
+          <input type="text" id="prefCollege" placeholder="College (e.g. DTU)" />
+          <input type="text" id="prefBranch" placeholder="Branch (e.g. CSE)" />
+          <button class="btn-primary sm" onclick="addPreference()">Add</button>
+        </div>
+        <ol class="pref-list" id="prefList">
+          <li class="pref-empty">No preferences added yet.</li>
+        </ol>
+        <div id="prefCopied" class="doubt-confirm hidden" style="margin-top:.75rem"></div>
+      </div>
+
     </div>
   </div>
 </section>

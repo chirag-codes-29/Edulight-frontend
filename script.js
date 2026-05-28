@@ -773,3 +773,64 @@ window.addEventListener('beforeunload', () => {
   saveTodos();
   saveChecklist();
 });
+
+// ─── PREFERENCE LIST ───
+let preferences = JSON.parse(localStorage.getItem('prefList') || '[]');
+
+function renderPreferences() {
+  const list = document.getElementById('prefList');
+  if (!list) return;
+  if (preferences.length === 0) {
+    list.innerHTML = '<li class="pref-empty">No preferences added yet.</li>';
+    return;
+  }
+  list.innerHTML = preferences.map((p, i) => `
+    <li class="pref-item">
+      <span class="pref-num">${i + 1}</span>
+      <span class="pref-text">${p.college} — ${p.branch}</span>
+      <button class="pref-remove" onclick="removePreference(${i})">✕</button>
+    </li>
+  `).join('');
+}
+
+function addPreference() {
+  const college = document.getElementById('prefCollege').value.trim();
+  const branch = document.getElementById('prefBranch').value.trim();
+  if (!college || !branch) return;
+  preferences.push({ college, branch });
+  localStorage.setItem('prefList', JSON.stringify(preferences));
+  document.getElementById('prefCollege').value = '';
+  document.getElementById('prefBranch').value = '';
+  renderPreferences();
+}
+
+function removePreference(index) {
+  preferences.splice(index, 1);
+  localStorage.setItem('prefList', JSON.stringify(preferences));
+  renderPreferences();
+}
+
+function buildShareText() {
+  if (preferences.length === 0) return null;
+  const lines = preferences.map((p, i) => `${i + 1}. ${p.college} — ${p.branch}`).join('\n');
+  return `📋 My JAC Delhi 2026 Preference List:\n\n${lines}\n\n🔗 Build yours at: chirag-codes-29.github.io/Edulight-frontend`;
+}
+
+function sharePreferenceWhatsApp() {
+  const text = buildShareText();
+  if (!text) { alert('Add at least one preference first!'); return; }
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function copyPreferenceList() {
+  const text = buildShareText();
+  if (!text) { alert('Add at least one preference first!'); return; }
+  navigator.clipboard.writeText(text).then(() => {
+    const el = document.getElementById('prefCopied');
+    el.textContent = '✅ Copied to clipboard!';
+    el.classList.remove('hidden');
+    setTimeout(() => el.classList.add('hidden'), 3000);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', renderPreferences);

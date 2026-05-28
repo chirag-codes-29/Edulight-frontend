@@ -1044,3 +1044,61 @@ blockquote {
 }
 .drag-ghost { opacity: 0.4; }
 .drag-over-item { border-top: 2px solid var(--teal-dk); }
+
+/* ─── PREFERENCE LIST ─── */
+.pref-input-row {
+  display: flex;
+  gap: .6rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.pref-input-row input {
+  flex: 1;
+  min-width: 120px;
+  padding: .5rem .75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-size: .875rem;
+}
+.pref-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.pref-list li.pref-empty {
+  color: var(--text-muted);
+  font-size: .85rem;
+  text-align: center;
+  padding: 1rem;
+}
+.pref-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: .6rem 1rem;
+  font-size: .875rem;
+}
+.pref-num {
+  font-weight: 700;
+  color: var(--teal-lt);
+  min-width: 1.5rem;
+}
+.pref-text { flex: 1; color: var(--text-main); }
+.pref-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0 .25rem;
+  transition: color .2s;
+}
+.pref-remove:hover { color: #ef4444; }
