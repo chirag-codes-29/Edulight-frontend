@@ -237,15 +237,15 @@ function toggleFaq(el) {
 /* ─── LOCALSTORAGE: CHECKLIST ─── */
 function saveChecklist() {
   const checks = {};
-  document.querySelectorAll('.doc-check').forEach(cb => {
-    checks[cb.dataset.id] = cb.checked;
+  document.querySelectorAll('#docChecklist input[type=checkbox]').forEach(cb => {
+    checks[cb.id] = cb.checked;
   });
   localStorage.setItem('edulight_checklist', JSON.stringify(checks));
 }
 function loadChecklist() {
   const saved = JSON.parse(localStorage.getItem('edulight_checklist') || '{}');
-  document.querySelectorAll('.doc-check').forEach(cb => {
-    if (saved[cb.dataset.id]) cb.checked = true;
+  document.querySelectorAll('#docChecklist input[type=checkbox]').forEach(cb => {
+    if (saved[cb.id]) cb.checked = true;
   });
   updateDocProgress();
 }
@@ -578,7 +578,7 @@ function addTask() {
   li.className = 'todo-item';
   li.dataset.id = id;
   li.innerHTML = `
-    <input type="checkbox" id="task-${id}" onchange="updateTaskCount()" />
+    <input type="checkbox" id="task-${id}" onchange="updateTaskCount(); saveTodos();" />
     <span>${escapeHtml(text)}</span>
     <button class="todo-del" onclick="removeTask(${id})" title="Delete">✕</button>
   `;
@@ -586,6 +586,7 @@ function addTask() {
   list?.appendChild(li);
   input.value = '';
   updateTaskCount();
+  saveTodos();
   showToast('✓ Task added!');
 }
 
@@ -601,6 +602,7 @@ function removeTask(id) {
     setTimeout(() => {
       li.remove();
       updateTaskCount();
+      saveTodos();
       // Show empty message if needed
       const list = document.getElementById('todoList');
       if (list && list.children.length === 0) {
@@ -618,6 +620,38 @@ function updateTaskCount() {
   const done  = [...document.querySelectorAll('.todo-item input:checked')].length;
   const el = document.getElementById('taskCount');
   if (el) el.textContent = `${tasks.length} task${tasks.length !== 1 ? 's' : ''}${done > 0 ? ' · ' + done + ' done' : ''}`;
+}
+/* ─── LOCALSTORAGE: TODO ─── */
+function saveTodos() {
+  const tasks = [];
+  document.querySelectorAll('.todo-item').forEach(li => {
+    tasks.push({
+      text: li.querySelector('span').textContent,
+      done: li.querySelector('input[type=checkbox]').checked
+    });
+  });
+  localStorage.setItem('edulight_todos', JSON.stringify(tasks));
+}
+
+function loadTodos() {
+  const saved = JSON.parse(localStorage.getItem('edulight_todos') || '[]');
+  if (!saved.length) return;
+  const list = document.getElementById('todoList');
+  if (!list) return;
+  list.querySelector('.todo-empty')?.remove();
+  saved.forEach(({ text, done }) => {
+    const id = ++taskIdCounter;
+    const li = document.createElement('li');
+    li.className = 'todo-item';
+    li.dataset.id = id;
+    li.innerHTML = `
+      <input type="checkbox" id="task-${id}" ${done ? 'checked' : ''} onchange="updateTaskCount(); saveTodos();" />
+      <span>${escapeHtml(text)}</span>
+      <button class="todo-del" onclick="removeTask(${id})" title="Delete">✕</button>
+    `;
+    list.appendChild(li);
+  });
+  updateTaskCount();
 }
 
 /* ═══════════════════════════════════════════════ NOTES ═══ */
@@ -693,6 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadNote();
   loadChecklist();
   loadPrefList();
+  loadTodos();
   animateStats();
 
   document.getElementById('predRank')?.addEventListener('keydown', e => {
