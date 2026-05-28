@@ -684,3 +684,11 @@ function animateStats() {
 document.querySelectorAll('a[href="#"]').forEach(a => {
   a.addEventListener('click', e => e.preventDefault());
 });
+/* ─── PREFERENCE BUILDER TOGGLE ─── */
+function togglePrefBuilder(header) {
+  const section = document.getElementById('prefBuilderSection');
+  const arrow = document.getElementById('prefBuilderArrow');
+  const isOpen = section.style.display !== 'none';
+  section.style.display = isOpen ? 'none' : 'grid';
+  arrow.textContent = isOpen ? '▼ Open' : '▲ Close';
+}

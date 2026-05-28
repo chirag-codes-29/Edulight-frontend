@@ -562,8 +562,13 @@
 
   <div class="section">
     <!-- PREFERENCE LIST BUILDER -->
-    <div class="section-header" style="margin-top:3rem"><h2>Preference List Builder</h2></div>
-    <div class="pref-builder">
+    <div class="section-header" style="margin-top:3rem;cursor:pointer;user-select:none;" onclick="togglePrefBuilder(this)">
+      <h2 style="display:flex;align-items:center;gap:.75rem;">
+        Preference List Builder
+        <span id="prefBuilderArrow" style="font-size:1rem;color:var(--teal-lt);transition:transform .3s;">▼ Open</span>
+      </h2>
+    </div>
+    <div class="pref-builder" id="prefBuilderSection" style="display:none;">
       <div class="pref-available">
         <h4>Available Options <span class="tag">Drag to add</span></h4>
         <div class="pref-college-filter">
@@ -705,10 +710,10 @@
             <span>🏫</span><div><strong>IIITD</strong><small>iiitd.ac.in</small></div><span>↗</span>
           </a>
           <a href="https://dtu.ac.in" target="_blank" class="official-link">
-            <span>🏫</span><div><strong>DTU Delhi</strong><small>dtu.ac.in</small></div><span>↗</span>
+            <span>🏫</span><div><strong>DTU</strong><small>dtu.ac.in</small></div><span>↗</span>
           </a>
           <a href="https://nsut.ac.in" target="_blank" class="official-link">
-            <span>🏫</span><div><strong>NSUT Delhi</strong><small>nsut.ac.in</small></div><span>↗</span>
+            <span>🏫</span><div><strong>NSUT</strong><small>nsut.ac.in</small></div><span>↗</span>
           </a>
           <a href="https://jacdelhi.admissions.nic.in" target="_blank" class="official-link">
             <span>🌐</span><div><strong>JAC Delhi Portal</strong><small>Official Counseling</small></div><span>↗</span>
@@ -1429,15 +1434,15 @@
           
           <a href="https://dtu.ac.in" target="_blank" class="res-link-card">
             <div class="rl-icon">🏫</div>
-            <div><strong>DTU Delhi</strong><p>Official university portal</p></div>
+            <div><strong>DTU</strong><p>Official university portal</p></div>
           </a>
           <a href="https://nsut.ac.in" target="_blank" class="res-link-card">
             <div class="rl-icon">🏫</div>
-            <div><strong>NSUT Delhi</strong><p>Official university portal</p></div>
+            <div><strong>NSUT</strong><p>Official university portal</p></div>
           </a>
           <a href="https://www.iiitd.ac.in" target="_blank" class="res-link-card">
             <div class="rl-icon">🏫</div>
-            <div><strong>IIITD Delhi</strong><p>Official institute portal</p></div>
+            <div><strong>IIITD</strong><p>Official institute portal</p></div>
           </a>
           <a href="https://www.igdtuw.ac.in" target="_blank" class="res-link-card">
             <div class="rl-icon">🏫</div>
@@ -1516,7 +1521,7 @@
           <div class="avatar-glow"></div>
         </div>
         <h2>Chirag</h2>
-        <p class="founder-title">BTech IT · DTU Delhi · Batch 2029</p>
+        <p class="founder-title">BTech IT · DTU · Batch 2029</p>
         <div class="founder-social">
           <a href="https://www.linkedin.com/in/chirag-rao-b46740379" target="_blank" class="social-btn linkedin">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -1607,9 +1612,9 @@
     </div>
     <div class="footer-links">
       <h5>Colleges</h5>
-      <a href="https://dtu.ac.in" target="_blank">DTU Delhi</a>
-      <a href="https://nsut.ac.in" target="_blank">NSUT Delhi</a>
-      <a href="https://www.iiitd.ac.in" target="_blank">IIITD Delhi</a>
+      <a href="https://dtu.ac.in" target="_blank">DTU</a>
+      <a href="https://nsut.ac.in" target="_blank">NSUT</a>
+      <a href="https://www.iiitd.ac.in" target="_blank">IIITD</a>
       <a href="https://www.igdtuw.ac.in" target="_blank">IGDTUW</a>
     </div>
     <div class="footer-links">
