@@ -1029,7 +1029,7 @@ blockquote {
   text-align: right; padding-top: .15rem;
   display: flex; flex-direction: column;
 }
-.tl-day  { font-family: var(--font-head); font-size: .95rem; font-weight: 700; color: var(--navy); }
+.tl-day  { font-family: var(--font-head); font-size: .95rem; font-weight: 700; color: var(--text-main); }
 .tl-year { font-size: .72rem; color: var(--text-light); }
 .tl-dot {
   width: 14px; height: 14px; border-radius: 50%;
@@ -1070,7 +1070,7 @@ blockquote {
 .rep-title { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-light); margin-bottom: .5rem; }
 .rep-grid { display: grid; grid-template-columns: 1fr auto; gap: .3rem .75rem; }
 .rep-grid span { font-size: .82rem; color: var(--text-muted); }
-.rep-grid strong { font-size: .82rem; color: var(--navy); text-align: right; }
+.rep-grid strong { font-size: .82rem; color: var(--text-main); text-align: right; }
 
 .dates-focus {
   background: var(--navy); border-radius: var(--radius-xl);
