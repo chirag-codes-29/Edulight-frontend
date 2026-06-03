@@ -755,7 +755,14 @@ function escapeHtml(str) {
  * Initialize everything on DOM load
  */
 document.addEventListener('DOMContentLoaded', () => {
-setTimeout(() => document.getElementById('pageLoader')?.classList.add('hidden'), 800);
+const _loader = document.getElementById('pageLoader');
+if (_loader) {
+  _loader.style.transition = 'opacity .5s ease';
+  setTimeout(() => {
+    _loader.style.opacity = '0';
+    setTimeout(() => _loader.style.display = 'none', 500);
+  }, 700);
+}
   showPage('home');
   initDragDrop();
   loadNote();
