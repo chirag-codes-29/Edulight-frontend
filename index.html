@@ -469,6 +469,24 @@
   }
   .footer span { color: #FF6B00; }
   </style>
+  <style>
+#pageLoader {
+  position: fixed; inset: 0;
+  background: #111827;
+  z-index: 99999;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1.25rem;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+#pageLoader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+#pageLoader .pl-logo { font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: .5rem; font-family: sans-serif; }
+#pageLoader .pl-icon { color: #3AAFA9; }
+#pageLoader .pl-bar { width: 180px; height: 3px; background: rgba(255,255,255,.1); border-radius: 50px; overflow: hidden; }
+#pageLoader .pl-bar-fill { height: 100%; border-radius: 50px; background: linear-gradient(90deg, #3AAFA9, #2B7A78); animation: pl-slide 1.4s ease-in-out infinite; }
+#pageLoader .pl-text { font-size: .78rem; color: #5a7a82; letter-spacing: .06em; }
+@keyframes pl-slide { 0% { transform: translateX(-100%); width: 50%; } 100% { transform: translateX(260%); width: 50%; } }
+</style>
 </head>
 <body>
 <div class="page-loader" id="pageLoader">
