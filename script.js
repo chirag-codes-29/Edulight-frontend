@@ -755,6 +755,8 @@ function escapeHtml(str) {
  * Initialize everything on DOM load
  */
 document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('pageLoader')?.classList.remove('hidden'); // already visible, just for safety
+  setTimeout(() => document.getElementById('pageLoader')?.classList.add('hidden'), 700);
   showPage('home');
   initDragDrop();
   loadNote();
