@@ -15,14 +15,14 @@
 
   body {
     width: 100%;
-    background: #0a0e1a;
+    background: #FAFAF9;
     font-family: 'DM Sans', sans-serif;
-    color: #fff;
+    color: #111827;
     padding: 0;
   }
 
   .wrapper {
-    background: linear-gradient(160deg, #0d1321 0%, #0a0e1a 50%, #0d1321 100%);
+    background: #FFFFFF;
     padding: 44px 50px 40px 50px;
     position: relative;
     overflow: hidden;
@@ -72,7 +72,7 @@
     position: absolute;
     top: -120px; right: -120px;
     width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(255,165,0,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
     border-radius: 50%;
   }
   .wrapper::after {
@@ -94,8 +94,9 @@
   
   .badge {
     display: inline-block;
-    background: linear-gradient(90deg, #FF6B00, #FF9500);
-    color: #fff;
+    background: rgba(124,58,237,0.1);
+    border: 1px solid rgba(124,58,237,0.3);
+    color: #7C3AED;
     font-family: 'Space Mono', monospace;
     font-size: 10px;
     letter-spacing: 2px;
@@ -108,19 +109,19 @@
     font-size: 54px;
     letter-spacing: 2px;
     line-height: 1;
-    color: #fff;
+    color: #111827;
   }
-  .title span { color: #FF6B00; }
+  .title span { color: #7C3AED; }
   .subtitle {
     font-size: 13px;
-    color: #8899aa;
+    color: #6B7280;
     margin-top: 6px;
     letter-spacing: 0.5px;
   }
 
   .institutes-box {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: #F9FAFB;
+  border: 1px solid #E5E7EB;
     border-radius: 14px;
     padding: 14px 18px;
     min-width: 220px;
@@ -129,16 +130,16 @@
   .inst-label {
     font-size: 9px;
     letter-spacing: 2px;
-    color: #FF6B00;
+    color: #7C3AED;
     text-transform: uppercase;
     margin-bottom: 8px;
     font-weight: 700;
   }
   .inst-chip {
     display: inline-block;
-    background: rgba(255,107,0,0.12);
-    border: 1px solid rgba(255,107,0,0.3);
-    color: #FFB366;
+    background: rgba(124,58,237,0.1);
+    border: 1px solid rgba(124,58,237,0.3);
+    color: #7C3AED;
     font-size: 11px;
     font-weight: 600;
     padding: 3px 9px;
@@ -154,8 +155,8 @@
   }
   .elig-card {
     flex: 1;
-    background: linear-gradient(135deg, rgba(255,107,0,0.1) 0%, rgba(255,149,0,0.05) 100%);
-    border: 1px solid rgba(255,107,0,0.25);
+    background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(109,40,217,0.04) 100%);
+    border: 1px solid rgba(124,58,237,0.2);
     border-radius: 12px;
     padding: 12px 16px;
     display: flex;
@@ -168,7 +169,7 @@
   }
   .elig-title {
     font-size: 10px;
-    color: #FF9500;
+    color: #7C3AED;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -176,7 +177,7 @@
   }
   .elig-desc {
     font-size: 12px;
-    color: #ccd6e0;
+    color: #374151;
     line-height: 1.4;
   }
 
@@ -185,7 +186,7 @@
     font-family: 'Space Mono', monospace;
     font-size: 9px;
     letter-spacing: 3px;
-    color: #4a6080;
+    color: #9CA3AF;
     text-transform: uppercase;
     margin-bottom: 16px;
     display: flex;
@@ -196,7 +197,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, rgba(74,96,128,0.5), transparent);
+    background: linear-gradient(90deg, rgba(124,58,237,0.25), transparent);
   }
 
   /* ROADMAP */
@@ -212,8 +213,8 @@
     left: 12px; top: 10px; bottom: 10px;
     width: 3px;
     background: linear-gradient(180deg,
-      #FF6B00 0%,
-      #FF9500 20%,
+      #7C3AED 0%,
+      #10B981 20%,
       #00C2FF 40%,
       #00E099 60%,
       #7B5FFF 80%,
@@ -236,7 +237,7 @@
     width: 14px; height: 14px;
     border-radius: 50%;
     border: 2.5px solid;
-    background: #0a0e1a;
+    background: #FFFFFF;
     flex-shrink: 0;
     z-index: 2;
     display: flex;
@@ -283,7 +284,7 @@
   }
   .step-desc {
     font-size: 11.5px;
-    color: #8899aa;
+    color: #6B7280;
     line-height: 1.45;
   }
   .step-tag {
@@ -297,8 +298,8 @@
   }
 
   /* Color variants */
-  .s1 { --c: #FF6B00; }
-  .s2 { --c: #FF9500; }
+  .s1 { --c: #7C3AED; }
+  .s2 { --c: #10B981; }
   .s3 { --c: #FFD200; }
   .s4 { --c: #00C2FF; }
   .s5 { --c: #00E099; }
@@ -315,7 +316,7 @@
     background: color-mix(in srgb, var(--c) 15%, transparent);
     color: var(--c);
   }
-  .step .step-title { color: color-mix(in srgb, var(--c) 80%, #fff); }
+  .step .step-title { color: color-mix(in srgb, var(--c) 90%, #000); }
   .step .step-tag {
     background: color-mix(in srgb, var(--c) 15%, transparent);
     color: var(--c);
@@ -340,11 +341,11 @@
   .allot-title {
     font-size: 14px;
     font-weight: 700;
-    color: #00C2FF;
+    color: #0284C7;
   }
   .allot-sub {
     font-size: 11px;
-    color: #5a7a90;
+    color: #6B7280;
     margin-top: 1px;
   }
   .rounds-grid {
@@ -353,7 +354,7 @@
   }
   .round-card {
     flex: 1;
-    background: rgba(0,0,0,0.25);
+    background: #F9FAFB;
     border: 1px solid rgba(0,194,255,0.15);
     border-radius: 10px;
     padding: 10px 12px;
@@ -363,12 +364,12 @@
   .round-name {
     font-size: 11px;
     font-weight: 700;
-    color: #00C2FF;
+    color: #0284C7;
     margin-bottom: 3px;
   }
   .round-desc {
     font-size: 10px;
-    color: #6a8a9a;
+    color: #6B7280;
     line-height: 1.35;
   }
 
@@ -414,7 +415,7 @@
   .docs-title {
     font-size: 11px;
     font-weight: 700;
-    color: #00E099;
+    color: #059669;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -430,7 +431,7 @@
   .doc-chip {
     background: rgba(0,224,153,0.1);
     border: 1px solid rgba(0,224,153,0.2);
-    color: #80F0C0;
+    color: #047857;
     font-size: 10.5px;
     padding: 4px 10px;
     border-radius: 6px;
@@ -454,20 +455,20 @@
     align-items: flex-start;
   }
   .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .tip-text { font-size: 11px; color: #aabbc0; line-height: 1.4; }
-  .tip-text strong { color: #FFD200; font-weight: 700; }
+  .tip-text { font-size: 11px; color: #374151; line-height: 1.4; }
+  .tip-text strong { color: #D97706; font-weight: 700; }
 
   /* FOOTER */
   .footer {
     text-align: center;
     margin-top: 18px;
     padding-top: 14px;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(0,0,0,0.08);
     font-size: 10px;
-    color: #3a5060;
+    color: #9CA3AF;
     letter-spacing: 1px;
   }
-  .footer span { color: #FF6B00; }
+  .footer span { color: #7C3AED; }
   </style>
   <style>
 #pageLoader {
