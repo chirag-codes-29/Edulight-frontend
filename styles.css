@@ -410,6 +410,7 @@ p  { color: var(--text-muted); }
     linear-gradient(rgba(58,175,169,.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(58,175,169,.05) 1px, transparent 1px);
   background-size:60px 60px;
+  pointer-events: none;
 }
 .page-hero h1 { color:#111827; position:relative; }
 .page-hero p { color:#6B7280; max-width:550px; margin:.75rem auto 0; position:relative; }
