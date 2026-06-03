@@ -28,8 +28,43 @@
     overflow: hidden;
   }
   @media (max-width: 768px) {
-    .wrapper { padding: 20px 16px 24px 16px; }
+  .wrapper { padding: 20px 16px 24px 16px; }
+
+  /* Header: stack vertically on mobile */
+  .header {
+    flex-direction: column;
+    gap: 12px;
   }
+  .institutes-box {
+    min-width: unset;
+    text-align: left;
+    width: 100%;
+  }
+
+  /* Eligibility bar: single column */
+  .elig-bar {
+    flex-direction: column;
+  }
+
+  /* Rounds grid: 2x2 on mobile */
+  .rounds-grid {
+    flex-wrap: wrap;
+  }
+  .round-card {
+    flex: 1 1 calc(50% - 4px);
+    min-width: calc(50% - 4px);
+  }
+
+  /* Tips row: single column */
+  .tips-row {
+    flex-direction: column;
+  }
+
+  /* Special row: single column */
+  .special-row {
+    flex-direction: column;
+  }
+}
 
   /* BG decoration */
   .wrapper::before {
@@ -810,7 +845,7 @@
 
     <!-- MEET SECTION -->
     <div class="section-header" style="margin-top:3rem"><h2>Request a Meet</h2></div>
-    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:2rem;align-items:start;">
+    <div class="meet-request-grid">
 
       <!-- LEFT: Info + Notice -->
       <div style="display:flex;flex-direction:column;gap:1.25rem;">
@@ -1378,7 +1413,9 @@
       </div>
 
       <!-- DOCUMENT PROGRESS -->
-     <div class="doc-progress-list">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>📂 Document Progress</h3></div>
+        <div class="doc-progress-list">
           <div class="dp-item" data-cb="cb-fee">
             <div class="dp-label"><span>Fee Receipt</span><span class="dp-pct">0%</span></div>
             <div class="prog-bar"><div class="prog-fill" style="width:0%"></div></div>
@@ -1408,7 +1445,7 @@
           <div class="dp-label"><strong>Overall Readiness</strong><strong id="overallPct">0%</strong></div>
           <div class="prog-bar large"><div class="prog-fill" id="overallFill" style="width:0%"></div></div>
         </div>
-      
+        
       </div>
 
       <!-- NOTES SECTION -->

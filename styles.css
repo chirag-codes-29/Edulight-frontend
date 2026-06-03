@@ -1284,3 +1284,19 @@ blockquote {
   transition: color .2s;
 }
 .pref-remove:hover { color: #ef4444; }
+/* ═══════════════════════════════════════════════ MOBILE FIXES ═══ */
+
+/* Community — Request a Meet grid */
+.meet-request-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .meet-request-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
