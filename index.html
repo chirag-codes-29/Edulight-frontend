@@ -27,6 +27,9 @@
     position: relative;
     overflow: hidden;
   }
+  @media (max-width: 768px) {
+    .wrapper { padding: 20px 16px 24px 16px; }
+  }
 
   /* BG decoration */
   .wrapper::before {
@@ -440,9 +443,7 @@
     <a class="nav-logo" href="#" onclick="showPage('home')">
       <span class="logo-icon">◈</span> EduLight
     </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+
     <ul class="nav-links" id="navLinks">
       <li><a href="#" onclick="showPage('admission')" data-page="admission">Admission</a></li>
       <li><a href="#" onclick="showPage('dates')" data-page="dates">📅 Dates</a></li>
