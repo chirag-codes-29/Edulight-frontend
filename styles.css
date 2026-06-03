@@ -754,6 +754,7 @@ p  { color: var(--text-muted); }
   padding:.85rem 0; border-bottom:1px solid var(--border);
   font-size:.875rem; align-items:center; color:var(--text-main);
 }
+.branch-compare .bt-row:not(.bt-header) { color: inherit; }
 .bt-row:last-child { border-bottom:none; }
 .bt-header { font-weight:700; font-size:.8rem; color:var(--text-light); text-transform:uppercase; letter-spacing:.05em; }
 .type-tag { font-size:.75rem; font-weight:600; padding:.2rem .6rem; border-radius:50px; }
