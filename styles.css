@@ -844,7 +844,8 @@ p  { color: var(--text-muted); }
 
 .todo-input-row { display:flex; gap:.5rem; margin-bottom:1rem; }
 .todo-input-row input {
-  flex:1; padding:.65rem 1rem;
+  flex:1; min-width:0; padding:.65rem 1rem;
+  background:#0B0B0A; color:var(--text-main);
   border:1.5px solid var(--border); border-radius:var(--radius-sm);
   font-family:var(--font-body); font-size:.9rem; outline:none;
   transition:border-color .2s;
@@ -1159,7 +1160,7 @@ blockquote {
     gap: .3rem;
     list-style: none;
     border-top: 1px solid var(--border);
-    background: rgba(255,255,255,.98);
+    background: #0B0B0A;
   }
 
   .nav-links::-webkit-scrollbar { display: none; }
@@ -1172,21 +1173,21 @@ blockquote {
     font-size: .78rem;
     border-radius: 50px;
     white-space: nowrap;
-    background: rgba(124,58,237,.07);
-    border: 1px solid rgba(124,58,237,.2);
-    color: #374151;
+    background: rgba(194,168,118,.08);
+    border: 1px solid rgba(194,168,118,.25);
+    color: var(--text-main);
   }
 
   .nav-links a:hover,
   .nav-links a.active-link {
-    background: rgba(58,175,169,.2);
+    background: rgba(194,168,118,.2);
     color: var(--teal-lt);
     border-color: var(--teal-lt);
   }
 
   .nav-links .nav-cta {
-    background: var(--teal-lt) !important;
-    color: var(--white) !important;
+    background: #10B981 !important;
+    color: #ffffff !important;
     border-color: transparent !important;
   }
 
@@ -1196,7 +1197,8 @@ blockquote {
   .strategy-grid { grid-template-columns: 1fr; }
   .prep-card.big-card { grid-column: span 1; }
   .prep-grid { grid-template-columns: 1fr; }
-  .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-grid { grid-template-columns: minmax(0, 1fr); }
+  .dash-card { padding: 1.25rem; }
   .dash-card.full-width-card { grid-column: span 1; }
   .groups-grid { grid-template-columns: 1fr; }
   .achievements-grid { grid-template-columns: 1fr; }
