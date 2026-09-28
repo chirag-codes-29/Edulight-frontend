@@ -6,23 +6,22 @@
   <title>EduLight - From Rank to Right Path</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     width: 100%;
-    background: #FAFAF9;
-    font-family: 'DM Sans', sans-serif;
-    color: #111827;
+    background: var(--bg-light);
+    font-family: var(--font-body);
+    color: var(--text-main);
     padding: 0;
   }
 
   .wrapper {
-    background: #FFFFFF;
+    background: var(--bg-card);
     padding: 44px 50px 40px 50px;
     position: relative;
     overflow: hidden;
@@ -72,7 +71,7 @@
     position: absolute;
     top: -120px; right: -120px;
     width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(194,168,118,0.10) 0%, transparent 70%);
     border-radius: 50%;
   }
   .wrapper::after {
@@ -80,7 +79,7 @@
     position: absolute;
     bottom: -80px; left: -80px;
     width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(0,120,255,0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(194,168,118,0.06) 0%, transparent 70%);
     border-radius: 50%;
   }
 
@@ -94,10 +93,10 @@
   
   .badge {
     display: inline-block;
-    background: rgba(124,58,237,0.1);
-    border: 1px solid rgba(124,58,237,0.3);
-    color: #7C3AED;
-    font-family: 'Space Mono', monospace;
+    background: rgba(194,168,118,0.12);
+    border: 1px solid rgba(194,168,118,0.3);
+    color: var(--teal-lt);
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     letter-spacing: 2px;
     padding: 4px 12px;
@@ -105,24 +104,25 @@
     margin-bottom: 8px;
   }
   .title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 54px;
-    letter-spacing: 2px;
+    font-family: var(--font-head);
+    font-weight: 400;
+    font-size: 44px;
+    letter-spacing: -0.01em;
     line-height: 1;
-    color: #111827;
+    color: var(--text-main);
   }
-  .title span { color: #7C3AED; }
+  .title span { color: var(--teal-lt); font-style: italic; }
   .subtitle {
     font-size: 13px;
-    color: #6B7280;
+    color: var(--text-muted);
     margin-top: 6px;
     letter-spacing: 0.5px;
   }
 
   .institutes-box {
-    background: #F9FAFB;
-  border: 1px solid #E5E7EB;
-    border-radius: 14px;
+    background: var(--bg-card);
+  border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     padding: 14px 18px;
     min-width: 220px;
     text-align: right;
@@ -130,16 +130,16 @@
   .inst-label {
     font-size: 9px;
     letter-spacing: 2px;
-    color: #7C3AED;
+    color: var(--teal-lt);
     text-transform: uppercase;
     margin-bottom: 8px;
     font-weight: 700;
   }
   .inst-chip {
     display: inline-block;
-    background: rgba(124,58,237,0.1);
-    border: 1px solid rgba(124,58,237,0.3);
-    color: #7C3AED;
+    background: rgba(194,168,118,0.12);
+    border: 1px solid rgba(194,168,118,0.3);
+    color: var(--teal-lt);
     font-size: 11px;
     font-weight: 600;
     padding: 3px 9px;
@@ -155,9 +155,9 @@
   }
   .elig-card {
     flex: 1;
-    background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(109,40,217,0.04) 100%);
-    border: 1px solid rgba(124,58,237,0.2);
-    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(194,168,118,0.1) 0%, rgba(194,168,118,0.04) 100%);
+    border: 1px solid rgba(194,168,118,0.25);
+    border-radius: var(--radius-sm);
     padding: 12px 16px;
     display: flex;
     align-items: center;
@@ -169,7 +169,7 @@
   }
   .elig-title {
     font-size: 10px;
-    color: #7C3AED;
+    color: var(--teal-lt);
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -177,16 +177,16 @@
   }
   .elig-desc {
     font-size: 12px;
-    color: #374151;
+    color: var(--text-muted);
     line-height: 1.4;
   }
 
   /* DIVIDER */
   .section-label {
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     letter-spacing: 3px;
-    color: #9CA3AF;
+    color: var(--text-light);
     text-transform: uppercase;
     margin-bottom: 16px;
     display: flex;
@@ -197,7 +197,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, rgba(124,58,237,0.25), transparent);
+    background: linear-gradient(90deg, rgba(194,168,118,0.3), transparent);
   }
 
   /* ROADMAP */
@@ -263,7 +263,7 @@
   }
 
   .step-num {
-    font-family: 'Space Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
     font-weight: 700;
     flex-shrink: 0;
@@ -284,7 +284,7 @@
   }
   .step-desc {
     font-size: 11.5px;
-    color: #6B7280;
+    color: var(--text-muted);
     line-height: 1.45;
   }
   .step-tag {
@@ -316,7 +316,7 @@
     background: color-mix(in srgb, var(--c) 15%, transparent);
     color: var(--c);
   }
-  .step .step-title { color: color-mix(in srgb, var(--c) 90%, #000); }
+  .step .step-title { color: var(--c); }
   .step .step-tag {
     background: color-mix(in srgb, var(--c) 15%, transparent);
     color: var(--c);
@@ -325,8 +325,8 @@
 
   /* ALLOTMENT SECTION */
   .allotment-block {
-    background: rgba(0,194,255,0.06);
-    border: 1px solid rgba(0,194,255,0.2);
+    background: rgba(0,194,255,0.1);
+    border: 1px solid rgba(0,194,255,0.28);
     border-radius: 14px;
     padding: 16px 20px;
     margin-bottom: 14px;
@@ -341,11 +341,11 @@
   .allot-title {
     font-size: 14px;
     font-weight: 700;
-    color: #0284C7;
+    color: #38BDF8;
   }
   .allot-sub {
     font-size: 11px;
-    color: #6B7280;
+    color: var(--text-muted);
     margin-top: 1px;
   }
   .rounds-grid {
@@ -354,8 +354,8 @@
   }
   .round-card {
     flex: 1;
-    background: #F9FAFB;
-    border: 1px solid rgba(0,194,255,0.15);
+    background: rgba(0,194,255,0.05);
+    border: 1px solid rgba(0,194,255,0.2);
     border-radius: 10px;
     padding: 10px 12px;
     text-align: center;
@@ -364,12 +364,12 @@
   .round-name {
     font-size: 11px;
     font-weight: 700;
-    color: #0284C7;
+    color: #38BDF8;
     margin-bottom: 3px;
   }
   .round-desc {
     font-size: 10px;
-    color: #6B7280;
+    color: var(--text-muted);
     line-height: 1.35;
   }
 
@@ -402,12 +402,12 @@
   }
   .upgrade .s-title { color: #9B7FFF; }
   .spot .s-title { color: #FF6CAC; }
-  .special-card .s-desc { font-size: 11px; color: #6a8090; line-height: 1.35; }
+  .special-card .s-desc { font-size: 11px; color: var(--text-muted); line-height: 1.35; }
 
   /* DOCS SECTION */
   .docs-section {
-    background: rgba(0,224,153,0.05);
-    border: 1px solid rgba(0,224,153,0.18);
+    background: rgba(0,224,153,0.08);
+    border: 1px solid rgba(0,224,153,0.22);
     border-radius: 14px;
     padding: 14px 18px;
     margin-bottom: 14px;
@@ -415,7 +415,7 @@
   .docs-title {
     font-size: 11px;
     font-weight: 700;
-    color: #059669;
+    color: #34D399;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -429,9 +429,9 @@
     gap: 6px;
   }
   .doc-chip {
-    background: rgba(0,224,153,0.1);
-    border: 1px solid rgba(0,224,153,0.2);
-    color: #047857;
+    background: rgba(0,224,153,0.12);
+    border: 1px solid rgba(0,224,153,0.25);
+    color: #6EE7B7;
     font-size: 10.5px;
     padding: 4px 10px;
     border-radius: 6px;
@@ -455,25 +455,25 @@
     align-items: flex-start;
   }
   .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .tip-text { font-size: 11px; color: #374151; line-height: 1.4; }
-  .tip-text strong { color: #D97706; font-weight: 700; }
+  .tip-text { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+  .tip-text strong { color: #F59E0B; font-weight: 700; }
 
   /* JAC WIDGET FOOTER */
   .jac-footer {
     text-align: center;
     margin-top: 18px;
     padding-top: 14px;
-    border-top: 1px solid rgba(0,0,0,0.08);
+    border-top: 1px solid var(--border);
     font-size: 10px;
-    color: #9CA3AF;
+    color: var(--text-light);
     letter-spacing: 1px;
   }
-  .jac-footer span { color: #7C3AED; }
+  .jac-footer span { color: var(--teal-lt); }
   </style>
   <style>
 #pageLoader {
   position: fixed; inset: 0;
-  background: #111827;
+  background: var(--bg-light);
   z-index: 99999;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
@@ -481,11 +481,11 @@
   transition: opacity .5s ease, visibility .5s ease;
 }
 #pageLoader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-#pageLoader .pl-logo { font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: .5rem; font-family: sans-serif; }
-#pageLoader .pl-icon { color: #3AAFA9; }
-#pageLoader .pl-bar { width: 180px; height: 3px; background: rgba(255,255,255,.1); border-radius: 50px; overflow: hidden; }
-#pageLoader .pl-bar-fill { height: 100%; border-radius: 50px; background: linear-gradient(90deg, #3AAFA9, #2B7A78); animation: pl-slide 1.4s ease-in-out infinite; }
-#pageLoader .pl-text { font-size: .78rem; color: #5a7a82; letter-spacing: .06em; }
+#pageLoader .pl-logo { font-size: 1.5rem; font-weight: 500; color: var(--text-main); display: flex; align-items: center; gap: .5rem; font-family: var(--font-head); }
+#pageLoader .pl-icon { color: var(--teal-lt); }
+#pageLoader .pl-bar { width: 180px; height: 3px; background: var(--border); border-radius: 50px; overflow: hidden; }
+#pageLoader .pl-bar-fill { height: 100%; border-radius: 50px; background: var(--teal-lt); animation: pl-slide 1.4s ease-in-out infinite; }
+#pageLoader .pl-text { font-size: .78rem; color: var(--text-muted); letter-spacing: .06em; }
 @keyframes pl-slide { 0% { transform: translateX(-100%); width: 50%; } 100% { transform: translateX(260%); width: 50%; } }
 </style>
 </head>
@@ -503,16 +503,14 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a class="nav-logo" href="#" onclick="showPage('home')">
-      <span class="logo-icon">◈</span> EduLight
+      EduLight
     </a>
 
     <ul class="nav-links" id="navLinks">
       <li><a href="#" onclick="showPage('admission')" data-page="admission">Admission</a></li>
       <li><a href="#" onclick="showPage('dates')" data-page="dates">📅 Dates</a></li>
       <li><a href="#" onclick="showPage('community')" data-page="community">Community</a></li>
-      <li><a href="#" onclick="showPage('explore')" data-page="explore">Explore</a></li>
       <li><a href="#" onclick="showPage('jac')" data-page="jac">JAC Delhi</a></li>
-      <li><a href="#" onclick="showPage('prep')" data-page="prep">Prep</a></li>
       <li><a href="#" onclick="showPage('dashboard')" data-page="dashboard">Dashboard</a></li>
       <li><a href="#" onclick="showPage('resources')" data-page="resources">Resources</a></li>
       <li><a href="#" onclick="showPage('about')" class="nav-cta" data-page="about">About</a></li>
@@ -525,17 +523,18 @@
 
   <!-- HERO -->
   <div class="hero">
-  
-    <div class="hero-content">
-      <div class="hero-badge"> Your Complete College Journey Guide </div>
-      <h1 class="hero-title">From Rank to<br/><span class="gradient-text">Right Path</span></h1>
-      <p class="hero-sub">From counseling to campus life - EduLight is your one-stop guide for everything after JEE. Resources, tools and a community built for Delhi engineering aspirants.</p>
-    </div>
-    <div class="hero-quote-card">
-      <div class="hqc-quotemark">"</div>
-      <p class="hqc-text">The quality of your life will be determined by the quality of your contribution. When you work to improve the lives of others, your life improves automatically.</p>
-      <div class="hqc-divider"></div>
-      <span class="hqc-author">KUREK ASHLEY</span>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"> Your Complete College Journey Guide </div>
+        <h1 class="hero-title">From Rank to<br/><span class="gradient-text">Right Path</span></h1>
+        <p class="hero-sub">From counseling to campus life - EduLight is your one-stop guide for everything after JEE. Resources, tools and a community built for Delhi engineering aspirants.</p>
+      </div>
+      <div class="hero-quote-card">
+        <div class="hqc-quotemark">"</div>
+        <p class="hqc-text">  If you have knowledge, let others light their candles in it.</p>
+        <div class="hqc-divider"></div>
+        <span class="hqc-author">Margaret Fuller</span>
+      </div>
     </div>
   </div>
 
@@ -594,7 +593,7 @@
         <p>Curated links, downloadsand  guides for every stage of your counseling journey.</p>
         <span class="feat-arrow">→</span>
       </div>
-      <div class="feature-card" onclick="showPage('explore')">
+      <div class="feature-card" onclick="showPage('resources')">
         <div class="feat-icon">🔍</div>
         <h3>College Explorer</h3>
         <p>Deep-dive into DTU, NSUT, IIITD and IGDTUW - compare branches, placements & vibes.</p>
@@ -706,9 +705,9 @@
           <p class="pref-empty-msg">Drag options here to build your list</p>
         </div>
         <div style="display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap;">
-          <button class="btn-secondary" onclick="clearPrefList()">🗑️ Clear List</button>
-          <button class="btn-secondary" onclick="sharePrefBuilderWhatsApp()">📲 WhatsApp</button>
-          <button class="btn-secondary" onclick="copyPrefLink()">📋 Copy</button>
+          <button class="btn-secondary" style="flex:1;justify-content:center;white-space:nowrap;" onclick="clearPrefList()">🗑️ Clear List</button>
+          <button class="btn-secondary" style="flex:1;justify-content:center;white-space:nowrap;" onclick="sharePrefBuilderWhatsApp()">📲 WhatsApp</button>
+          <button class="btn-secondary" style="flex:1;justify-content:center;white-space:nowrap;" onclick="copyPrefLink()">📋 Copy</button>
         </div>
       </div>
     </div>
@@ -910,135 +909,6 @@
     </div>
 
     
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════ EXPLORE PAGE ═══ -->
-<section class="page" id="page-explore">
-  <div class="page-hero">
-    <span class="section-label">Know Your College</span>
-    <h1><span class="gradient-text">Explore</span> Delhi's Best</h1>
-    <p>Deep-dive into the top engineering colleges of Delhi. Compare. Decide. Commit.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-header"><h2>Top Colleges</h2></div>
-    <div class="college-grid">
-
-      <!-- DTU -->
-      <div class="college-card">
-        <div class="college-img dtu-img">
-          <div class="college-img-overlay">
-            <span class="college-tag">Est. 1941</span>
-          </div>
-        </div>
-        <div class="college-body">
-          <h3>Delhi Technological University</h3>
-          <div class="college-meta">
-            <span>📍 Rohini, Delhi</span>
-            <span>🏅 NIRF 30</span>
-          </div>
-          <p>Known for its legacy and strong engineering culture, DTU blends rigorous academics with one of North India's most vibrant campuses. Coding, core tech and startups thrive here, backed by excellent alumni reach. Massive fests like Engifest, solid placements and a competitive yet balanced environment make it a top choice for holistic growth.</p>
-         
-          <a href="https://dtu.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
-        </div>
-      </div>
-
-      <!-- NSUT -->
-      <div class="college-card">
-        <div class="college-img nsut-img">
-          <div class="college-img-overlay">
-            <span class="college-tag">Est. 1983</span>
-          </div>
-        </div>
-        <div class="college-body">
-          <h3>Netaji Subhas University of Technology</h3>
-          <div class="college-meta">
-            <span>📍 Dwarka, Delhi</span>
-            <span>🏅 NIRF 70</span>
-          </div>
-          <p>NSUT offers a disciplined academic environment with high placement consistency, especially in tech roles. The campus is modern and structured, with active societies and growing research culture. Known for coding and corporate exposure, it strikes a balance between academics and extracurriculars, though relatively stricter than peers.</p>
-         
-          <a href="https://nsut.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
-        </div>
-      </div>
-
-      <!-- IIITD -->
-      <div class="college-card">
-        <div class="college-img iiitd-img">
-          <div class="college-img-overlay">
-            <span class="college-tag">Est. 2008</span>
-          </div>
-        </div>
-        <div class="college-body">
-          <h3>IIIT Delhi</h3>
-          <div class="college-meta">
-            <span>📍 Okhla, Delhi</span>
-            <span>🏅 NIRF 63</span>
-          </div>
-          <p>IIIT-Delhi is research-driven and academically intense, focusing on computer science, AIand  interdisciplinary tech. Smaller batches ensure strong faculty interaction and cutting-edge labs. It's ideal for students inclined toward innovation, startups, or higher studies, with top-tier tech placements and a fast-evolving ecosystem.</p>
-          
-          <a href="https://www.iiitd.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
-        </div>
-      </div>
-
-      <!-- IGDTUW -->
-      <div class="college-card">
-        <div class="college-img igdtuw-img">
-          <div class="college-img-overlay">
-            <span class="college-tag">Est. 1998</span>
-          </div>
-        </div>
-        <div class="college-body">
-          <h3>IGDTUW Delhi</h3>
-          <div class="college-meta">
-            <span>📍 Kashmere Gate, Delhi</span>
-            <span> Women's Tech University</span>
-          </div>
-          <p>A leading women-only tech university, IGDTUW provides a supportive and empowering environment. It has rapidly improved in placements, especially in CS/ITand  promotes leadership through active societies. With a focus on inclusivity and growth, it's a strong option for women aiming for both academics and career opportunities.</p>
-          
-          <a href="https://www.igdtuw.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
-</div>
-      </div>
-    </div>
-
-    <!-- SEAT MATRIX -->
-    <div class="section-header" style="margin-top:3rem"><h2>seat matrix 2026</h2></div>
-    <div class="branch-compare" style="background:#0f1623; color:#e2f2f1;">
-      <div class="branch-table">
-        <div class="bt-row bt-header" style="grid-template-columns:1fr 2fr;">
-          <div>College</div><div>PDF Link</div>
-        </div>
-        <div class="bt-row" style="grid-template-columns:1fr 2fr;">
-          <div><strong>DTU</strong></div>
-          <div><a href="https://drive.google.com/file/d/1BfdktISFqyFuODtBfvDXmWgfyARGrYKI/view?usp=drivesdk" target="_blank" class="btn-secondary sm">📄 Open PDF ↗</a></div>
-        </div>
-        <div class="bt-row" style="grid-template-columns:1fr 2fr;">
-          <div><strong>NSUT</strong></div>
-          <div><a href="https://drive.google.com/file/d/1YAryaxEsfySSufEcSH7VlVmxAz-D6vNy/view?usp=drivesdk" target="_blank" class="btn-secondary sm">📄 Open PDF ↗</a></div>
-        </div>
-        <div class="bt-row" style="grid-template-columns:1fr 2fr;">
-          <div><strong>IIITD</strong></div>
-          <div><a href="https://drive.google.com/file/d/1c-i6FFGJW01PsUJb_mt94fs6BpGtU2CZ/view?usp=drivesdk" target="_blank" class="btn-secondary sm">📄 Open PDF ↗</a></div>
-        </div>
-        <div class="bt-row" style="grid-template-columns:1fr 2fr;">
-          <div><strong>IGDTUW</strong></div>
-          <div><a href="https://drive.google.com/file/d/1G4UgQaIUXsz6Ho1nhajGDp6g5SE4TSGK/view?usp=drivesdk" target="_blank" class="btn-secondary sm">📄 Open PDF ↗</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FEE STRUCTURE -->
-    <div class="section-header" style="margin-top:2.5rem"><h2>Fee Structure 2026</h2></div>
-    <div class="tool-card" style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;background:#0f1623;color:#e2f2f1;">
-      <div style="font-size:2rem">💰</div>
-      <div style="flex:1">
-        <h4 style="margin:0 0 .3rem">DTU, NSUT, IIITD & IGDTUW - Fee Breakdown 2026</h4>
-        <p style="margin:0;color:var(--text-muted);font-size:.9rem">Tuition, hostel and other charges for all colleges.</p>
-      </div>
-      <a href="https://drive.google.com/file/d/1dprxUPiCWVyf4bph0jTHvu8ms3BJUGHG/view?usp=drivesdk" target="_blank" class="btn-primary sm">📄 Open PDF ↗</a>
-    </div>
-
   </div>
 </section>
 <!-- ═══════════════════════════════════════════════ JAC DELHI PAGE ═══ -->
@@ -1321,111 +1191,6 @@
 
   </div>
 </section>
-<!-- ═══════════════════════════════════════════════ PREP PAGE ═══ -->
-<section class="page" id="page-prep">
-  <div class="page-hero">
-    <span class="section-label">Get Ready</span>
-    <h1>College <span class="gradient-text">Prep</span></h1>
-    <p>What to expect, what to avoid and  how to hit the ground running.</p>
-    <a href="https://chat.whatsapp.com/DXpdG0cugeSArHR0sHzK06?s=cl&p=a&mlu=0" target="_blank"
-      style="display:inline-flex;align-items:center;gap:.65rem;margin-top:1rem;
-             background:rgba(124,58,237,.12);border:1.5px solid rgba(124,58,237,.35);
-             border-radius:50px;padding:.55rem 1.1rem .55rem .75rem;
-             text-decoration:none;transition:background .2s,transform .2s;
-             position:relative;z-index:2;"
-      onmouseover="this.style.background='rgba(124,58,237,.2)';this.style.transform='translateY(-1px)'"
-      onmouseout="this.style.background='rgba(124,58,237,.12)';this.style.transform='translateY(0)'">
-      <span style="font-size:1.1rem">💬</span>
-      <span style="font-size:.82rem;color:#6D28D9;font-weight:600;">
-        For structured & well-calculated objectives — <u>join the EduLight group</u> ↗
-      </span>
-    </a>
-  </div>
-
-  <div class="section">
-    <div class="prep-grid">
-
-      <div class="prep-card big-card">
-        <div class="prep-card-icon">🗺️</div>
-        <h3>Your First Year Roadmap</h3>
-        <div class="roadmap">
-          <div class="rm-step">
-            <div class="rm-dot"></div>
-            <div class="rm-content">
-              <strong>Month 1–2: Orientation</strong>
-              <p>Get your ID card, join societies, attend all induction events. Don't skip.</p>
-            </div>
-          </div>
-          <div class="rm-step">
-            <div class="rm-dot"></div>
-            <div class="rm-content">
-              <strong>Month 3–4: Foundation</strong>
-              <p>Focus on basic programming (C, Python), Mathematicsand  DSA fundamentals.</p>
-            </div>
-          </div>
-          <div class="rm-step">
-            <div class="rm-dot"></div>
-            <div class="rm-content">
-              <strong>Month 5–6: Build</strong>
-              <p>Start your first project. Join a technical club. Begin competitive programming.</p>
-            </div>
-          </div>
-          <div class="rm-step">
-            <div class="rm-dot"></div>
-            <div class="rm-content">
-              <strong>Month 7–8: Grow</strong>
-              <p>Apply for your first internship (off-campus). Build your GitHub profile.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="prep-card">
-        <div class="prep-card-icon">🎓</div>
-        <h3>What to Expect in College</h3>
-        <ul class="prep-list">
-          <li>Freedom you've never had - handle it wisely</li>
-          <li>Huge skill gap between you and seniors - that's normal</li>
-          <li>Grades matter less than projects + skills for tech roles</li>
-          <li>CGPA matters for core/govt/MBA/higher studies</li>
-          <li>The first 2 semesters set your GPA trend - don't slip</li>
-          <li>Network relentlessly - your batchmates are future colleagues</li>
-        </ul>
-      </div>
-
-      <div class="prep-card">
-        <div class="prep-card-icon">⚠️</div>
-        <h3>Common Mistakes to Avoid</h3>
-        <ul class="prep-list danger">
-          <li>Skipping classes thinking "I'll study later"</li>
-          <li>Not joining any society or club in Sem 1</li>
-          <li>Waiting for placements to start coding</li>
-          <li>Comparing yourself to everyone on LinkedIn</li>
-          <li>Neglecting physical and mental health</li>
-          <li>Underestimating internship season deadlines</li>
-        </ul>
-      </div>
-
-      <div class="prep-card">
-        <div class="prep-card-icon">💡</div>
-        <h3>Skills to Start Now</h3>
-        <div class="skill-pills">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">DSA</span>
-          <span class="skill-pill">Git & GitHub</span>
-          <span class="skill-pill">Linux Basics</span>
-          <span class="skill-pill">SQL</span>
-          <span class="skill-pill">HTML/CSS</span>
-          <span class="skill-pill">Problem Solving</span>
-          <span class="skill-pill">Communication</span>
-        </div>
-        <p style="margin-top:1rem;color:var(--text-muted);font-size:.9rem">Start these before your first semester even begins. You'll thank yourself later.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ═══════════════════════════════════════════════ DASHBOARD PAGE ═══ -->
 <section class="page" id="page-dashboard">
   <div class="page-hero">
@@ -1589,6 +1354,176 @@
       </div>
 
     </div>
+
+    <div class="section-header" style="margin-top:4rem">
+      <h2>Explore Colleges</h2>
+      <p>Deep-dive into the top engineering colleges of Delhi. Compare. Decide. Commit.</p>
+    </div>
+    <div class="college-grid">
+      <div class="college-card">
+        <div class="college-img dtu-img">
+          <div class="college-img-overlay"><span class="college-tag">Est. 1941</span></div>
+        </div>
+        <div class="college-body">
+          <h3>Delhi Technological University</h3>
+          <div class="college-meta"><span>📍 Rohini, Delhi</span><span>🏅 NIRF 30</span></div>
+          <p>Known for its legacy and strong engineering culture, DTU blends rigorous academics with one of North India's most vibrant campuses. Coding, core tech and startups thrive here, backed by excellent alumni reach. Massive fests like Engifest, solid placements and a competitive yet balanced environment make it a top choice for holistic growth.</p>
+          <a href="https://dtu.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
+        </div>
+      </div>
+      <div class="college-card">
+        <div class="college-img nsut-img">
+          <div class="college-img-overlay"><span class="college-tag">Est. 1983</span></div>
+        </div>
+        <div class="college-body">
+          <h3>Netaji Subhas University of Technology</h3>
+          <div class="college-meta"><span>📍 Dwarka, Delhi</span><span>🏅 NIRF 70</span></div>
+          <p>NSUT offers a disciplined academic environment with high placement consistency, especially in tech roles. The campus is modern and structured, with active societies and growing research culture. Known for coding and corporate exposure, it strikes a balance between academics and extracurriculars, though relatively stricter than peers.</p>
+          <a href="https://nsut.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
+        </div>
+      </div>
+      <div class="college-card">
+        <div class="college-img iiitd-img">
+          <div class="college-img-overlay"><span class="college-tag">Est. 2008</span></div>
+        </div>
+        <div class="college-body">
+          <h3>IIIT Delhi</h3>
+          <div class="college-meta"><span>📍 Okhla, Delhi</span><span>🏅 NIRF 63</span></div>
+          <p>IIIT-Delhi is research-driven and academically intense, focusing on computer science, AIand  interdisciplinary tech. Smaller batches ensure strong faculty interaction and cutting-edge labs. It's ideal for students inclined toward innovation, startups, or higher studies, with top-tier tech placements and a fast-evolving ecosystem.</p>
+          <a href="https://www.iiitd.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
+        </div>
+      </div>
+      <div class="college-card">
+        <div class="college-img igdtuw-img">
+          <div class="college-img-overlay"><span class="college-tag">Est. 1998</span></div>
+        </div>
+        <div class="college-body">
+          <h3>IGDTUW Delhi</h3>
+          <div class="college-meta"><span>📍 Kashmere Gate, Delhi</span><span> Women's Tech University</span></div>
+          <p>A leading women-only tech university, IGDTUW provides a supportive and empowering environment. It has rapidly improved in placements, especially in CS/ITand  promotes leadership through active societies. With a focus on inclusivity and growth, it's a strong option for women aiming for both academics and career opportunities.</p>
+          <a href="https://www.igdtuw.ac.in" target="_blank" class="btn-secondary sm">Visit Website ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top:3rem"><h2>seat matrix 2026</h2></div>
+    <div class="branch-compare" style="background:#0f1623; color:#e2f2f1;">
+      <div class="branch-table">
+        <div class="bt-row bt-header" style="grid-template-columns:1fr 2fr;"><div>College</div><div>PDF Link</div></div>
+        <div class="bt-row" style="grid-template-columns:1fr 2fr;"><div><strong>DTU</strong></div><div><a href="https://drive.google.com/file/d/1BfdktISFqyFuODtBfvDXmWgfyARGrYKI/view?usp=drivesdk" target="_blank" class="btn-secondary sm">📄 Open PDF ↗</a></div></div>
+        <div class="bt-row" style="grid-template-columns:1fr 2fr;"><div><strong>NSUT</strong></div><div><a href="https://drive.google.com/file/d/1YAryaxEsfySSufEcSH7VlVmxAz-D6vNy/view?usp=drivesdk" target="_blank" class="btn-secondary sm">📄 Open PDF ↗</a></div></div>
+        <div class="bt-row" style="grid-template-columns:1fr 2fr;"><div><strong>IIITD</strong></div><div><a href="https://drive.google.com/file/d/1c-i6FFGJW01PsUJb_mt94fs6BpGtU2CZ/view?usp=drivesdk" target="_blank" class="btn-secondary sm">📄 Open PDF ↗</a></div></div>
+        <div class="bt-row" style="grid-template-columns:1fr 2fr;"><div><strong>IGDTUW</strong></div><div><a href="https://drive.google.com/file/d/1G4UgQaIUXsz6Ho1nhajGDp6g5SE4TSGK/view?usp=drivesdk" target="_blank" class="btn-secondary sm">📄 Open PDF ↗</a></div></div>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top:2.5rem"><h2>Fee Structure 2026</h2></div>
+    <div class="tool-card" style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;background:#0f1623;color:#e2f2f1;">
+      <div style="font-size:2rem">💰</div>
+      <div style="flex:1">
+        <h4 style="margin:0 0 .3rem">DTU, NSUT, IIITD & IGDTUW - Fee Breakdown 2026</h4>
+        <p style="margin:0;color:var(--text-muted);font-size:.9rem">Tuition, hostel and other charges for all colleges.</p>
+      </div>
+            <a href="https://drive.google.com/file/d/1dprxUPiCWVyf4bph0jTHvu8ms3BJUGHG/view?usp=drivesdk" target="_blank" class="btn-primary sm">📄 Open PDF ↗</a>
+    </div>
+
+    <div class="section-header" style="margin-top:4rem">
+      <h2>College Prep</h2>
+      <p>What to expect, what to avoid and how to hit the ground running.</p>
+      <a href="https://chat.whatsapp.com/DXpdG0cugeSArHR0sHzK06?s=cl&p=a&mlu=0" target="_blank"
+        style="display:inline-flex;align-items:center;gap:.65rem;margin-top:1rem;
+               background:rgba(124,58,237,.12);border:1.5px solid rgba(124,58,237,.35);
+               border-radius:50px;padding:.55rem 1.1rem .55rem .75rem;
+               text-decoration:none;transition:background .2s,transform .2s;"
+        onmouseover="this.style.background='rgba(124,58,237,.2)'"
+        onmouseout="this.style.background='rgba(124,58,237,.12)'">
+        <span style="font-size:1.1rem">💬</span>
+        <span style="font-size:.82rem;color:#6D28D9;font-weight:600;">
+          For structured & well-calculated objectives — <u>join the EduLight group</u> ↗
+        </span>
+      </a>
+    </div>
+    <div class="prep-grid">
+
+      <div class="prep-card big-card">
+        <div class="prep-card-icon">🗺️</div>
+        <h3>Your First Year Roadmap</h3>
+        <div class="roadmap">
+          <div class="rm-step">
+            <div class="rm-dot"></div>
+            <div class="rm-content">
+              <strong>Month 1–2: Orientation</strong>
+              <p>Get your ID card, join societies, attend all induction events. Don't skip.</p>
+            </div>
+          </div>
+          <div class="rm-step">
+            <div class="rm-dot"></div>
+            <div class="rm-content">
+              <strong>Month 3–4: Foundation</strong>
+              <p>Focus on basic programming (C, Python), Mathematicsand  DSA fundamentals.</p>
+            </div>
+          </div>
+          <div class="rm-step">
+            <div class="rm-dot"></div>
+            <div class="rm-content">
+              <strong>Month 5–6: Build</strong>
+              <p>Start your first project. Join a technical club. Begin competitive programming.</p>
+            </div>
+          </div>
+          <div class="rm-step">
+            <div class="rm-dot"></div>
+            <div class="rm-content">
+              <strong>Month 7–8: Grow</strong>
+              <p>Apply for your first internship (off-campus). Build your GitHub profile.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-card-icon">🎓</div>
+        <h3>What to Expect in College</h3>
+        <ul class="prep-list">
+          <li>Freedom you've never had - handle it wisely</li>
+          <li>Huge skill gap between you and seniors - that's normal</li>
+          <li>Grades matter less than projects + skills for tech roles</li>
+          <li>CGPA matters for core/govt/MBA/higher studies</li>
+          <li>The first 2 semesters set your GPA trend - don't slip</li>
+          <li>Network relentlessly - your batchmates are future colleagues</li>
+        </ul>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-card-icon">⚠️</div>
+        <h3>Common Mistakes to Avoid</h3>
+        <ul class="prep-list danger">
+          <li>Skipping classes thinking "I'll study later"</li>
+          <li>Not joining any society or club in Sem 1</li>
+          <li>Waiting for placements to start coding</li>
+          <li>Comparing yourself to everyone on LinkedIn</li>
+          <li>Neglecting physical and mental health</li>
+          <li>Underestimating internship season deadlines</li>
+        </ul>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-card-icon">💡</div>
+        <h3>Skills to Start Now</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">DSA</span>
+          <span class="skill-pill">Git & GitHub</span>
+          <span class="skill-pill">Linux Basics</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">HTML/CSS</span>
+          <span class="skill-pill">Problem Solving</span>
+          <span class="skill-pill">Communication</span>
+        </div>
+        <p style="margin-top:1rem;color:var(--text-muted);font-size:.9rem">Start these before your first semester even begins. You'll thank yourself later.</p>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
@@ -1632,41 +1567,45 @@
       <!-- RIGHT: Story -->
       <div class="founder-story">
         <div class="story-block">
-          <h3>Hi, I'm Chirag 👋</h3>
-          <p>A BTech IT student (Batch 2029) at Delhi Technological University, building EduLight to simplify the journey from JEE rank to the right college decision.</p>
-          <p>I created EduLight because I saw firsthand how confusing and stressful the counseling process is - scattered information, contradictory adviceand  no single reliable source for JAC Delhi aspirants. This platform is my attempt to fix that.</p>
+          <h3>Hi, I'm Chirag </h3>
+          <p>BTech IT student at Delhi Technological University (Batch 2029) — and the guy who got tired of watching JEE aspirants navigate counseling on rumors instead of facts.</p>
+          <p>So I built EduLight: a JAC Delhi guide now trusted by <strong>1000+ students</strong> for everything from preference-building to document checklists. One clear, honest source - not fifty conflicting WhatsApp forwards.</p>
         </div>
 
         <div class="story-block">
           <h3>Roles & Achievements</h3>
           <div class="achievements-grid">
             <div class="achievement-item">
-              <span class="ach-icon">🎓</span>
-              <div><strong>Class Representative</strong><p>DTU, IT Department</p></div>
-            </div>
-            <div class="achievement-item">
               <span class="ach-icon">💼</span>
               <div><strong>Placement Committee Member</strong><p>DTU Placements Cell</p></div>
             </div>
             <div class="achievement-item">
               <span class="ach-icon">🏆</span>
-              <div><strong>Dell Aspire Scholar</strong><p>Merit-based scholarship recipient</p></div>
-            </div>
-            <div class="achievement-item">
-              <span class="ach-icon">🔢</span>
-              <div><strong>MACS DTU Member</strong><p>Mathematics & Computing Society</p></div>
-            </div>
-            <div class="achievement-item">
-              <span class="ach-icon">🎨</span>
-              <div><strong>Visual Artist & Creative Designer</strong><p>Engifest DTU</p></div>
-            </div>
-            <div class="achievement-item">
-              <span class="ach-icon">✨</span>
-              <div><strong>Glykeria Fashion Model</strong><p>DTU Fashion Society</p></div>
+              <div><strong>Dell Aspire Scholar</strong><p>Michael & Susan Dell Foundation</p></div>
             </div>
             <div class="achievement-item">
               <span class="ach-icon">🌍</span>
-              <div><strong>Social Volunteer</strong><p>Rotaract Club of DTU Regency</p></div>
+              <div><strong>Director, International Services</strong><p>Rotaract Club of DTU Regency</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">🏠</span>
+              <div><strong>Vice President</strong><p>VVS Hostel</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">📋</span>
+              <div><strong>Class Representative</strong><p>DTU IT Dept · Leading 70+ classmates</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">🚀</span>
+              <div><strong>Co-Head, STEP DTU</strong><p>Self Transforming & Empowering People</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">🎪</span>
+              <div><strong>Content Manager</strong><p>DTU Sports Council</p></div>
+            </div>
+            <div class="achievement-item">
+              <span class="ach-icon">🎨</span>
+              <div><strong>Creative Side</strong><p>Visual Artist (Engifest) & Fashion Model (Glykeria)</p></div>
             </div>
           </div>
         </div>
@@ -1992,8 +1931,6 @@
       <h5>Navigate</h5>
       <a href="#" onclick="showPage('admission')">Admission</a>
       <a href="#" onclick="showPage('community')">Community</a>
-      <a href="#" onclick="showPage('explore')">Explore</a>
-      <a href="#" onclick="showPage('prep')">Prep</a>
       <a href="#" onclick="showPage('dashboard')">Dashboard</a>
       <a href="#" onclick="showPage('resources')">Resources</a>
     </div>
